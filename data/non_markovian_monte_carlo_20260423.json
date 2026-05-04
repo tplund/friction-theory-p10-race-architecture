@@ -1,0 +1,40 @@
+{
+  "n_sequences": 1366,
+  "observed": {
+    "n_reliable": 16,
+    "n_1f": 15,
+    "frac_1f": 0.938
+  },
+  "monte_carlo": [
+    {
+      "trial": 0,
+      "n_reliable": 3,
+      "categories": {
+        "anti-correlated": 3
+      },
+      "frac_1f": 0.0,
+      "mean_alpha": -1.1204544827229013,
+      "median_alpha": -1.1796903355186994
+    },
+    {
+      "trial": 1,
+      "n_reliable": 1,
+      "categories": {
+        "anti-correlated": 1
+      },
+      "frac_1f": 0.0,
+      "mean_alpha": -0.7901161277668877,
+      "median_alpha": -0.7901161277668877
+    },
+    {
+      "trial": 2,
+      "n_reliable": 3,
+      "categories": {
+        "anti-correlated": 3
+      },
+      "frac_1f": 0.0,
+      "mean_alpha": -0.804051938926952,
+      "median_alpha": -0.8838323975841668
+    }
+  ]
+}

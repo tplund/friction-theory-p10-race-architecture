@@ -1,0 +1,87 @@
+[
+  {
+    "n_total_seq": 458,
+    "n_with_fit": 458,
+    "n_reliable": 6,
+    "n_1f": 6,
+    "frac_reliable": 0.013100436681222707,
+    "frac_1f_of_total": 0.013100436681222707,
+    "frac_1f_of_reliable": 1.0,
+    "mean_alpha_reliable": 0.7724057160246159,
+    "categories": {
+      "1f": 6
+    },
+    "file": "truthfulqa_calibrated_base.jsonl",
+    "model": "qwen3-4b-base",
+    "params_B": 4.0,
+    "log_params": 0.6020599913279624
+  },
+  {
+    "n_total_seq": 51,
+    "n_with_fit": 51,
+    "n_reliable": 1,
+    "n_1f": 1,
+    "frac_reliable": 0.0196078431372549,
+    "frac_1f_of_total": 0.0196078431372549,
+    "frac_1f_of_reliable": 1.0,
+    "mean_alpha_reliable": 0.817491064056409,
+    "categories": {
+      "1f": 1
+    },
+    "file": "p23_fictive_mechanism.jsonl",
+    "model": "qwen3-8b",
+    "params_B": 8.0,
+    "log_params": 0.9030899869919435
+  },
+  {
+    "n_total_seq": 190,
+    "n_with_fit": 190,
+    "n_reliable": 2,
+    "n_1f": 2,
+    "frac_reliable": 0.010526315789473684,
+    "frac_1f_of_total": 0.010526315789473684,
+    "frac_1f_of_reliable": 1.0,
+    "mean_alpha_reliable": 0.8585315483563489,
+    "categories": {
+      "1f": 2
+    },
+    "file": "mixed_eval_v3_multijudge_liquid.jsonl",
+    "model": "LiquidAI-LFM2-24B",
+    "params_B": 24.0,
+    "log_params": 1.380211241711606
+  },
+  {
+    "n_total_seq": 391,
+    "n_with_fit": 376,
+    "n_reliable": 7,
+    "n_1f": 7,
+    "frac_reliable": 0.017902813299232736,
+    "frac_1f_of_total": 0.017902813299232736,
+    "frac_1f_of_reliable": 1.0,
+    "mean_alpha_reliable": 0.9482930207538215,
+    "categories": {
+      "1f": 7
+    },
+    "file": "gsm8k_cr_validation_qwen3_235b.jsonl",
+    "model": "Qwen3-235B-Instruct-2507",
+    "params_B": 235.0,
+    "log_params": 2.3710678622717363
+  },
+  {
+    "n_total_seq": 146,
+    "n_with_fit": 146,
+    "n_reliable": 1,
+    "n_1f": 1,
+    "frac_reliable": 0.00684931506849315,
+    "frac_1f_of_total": 0.00684931506849315,
+    "frac_1f_of_reliable": 1.0,
+    "mean_alpha_reliable": 0.9011606917653814,
+    "categories": {
+      "1f": 1
+    },
+    "file": "mixed_eval_v3_multijudge_cogito.jsonl",
+    "model": "Cogito-671B",
+    "params_B": 671.0,
+    "log_params": 2.826722520168992
+  }
+]

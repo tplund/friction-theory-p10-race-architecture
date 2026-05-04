@@ -1,0 +1,75 @@
+[
+  {
+    "file": "truthfulqa_calibrated_base.jsonl",
+    "n_sequences": 458,
+    "n_with_fit": 458,
+    "n_reliable_r2_gt_0.3": 6,
+    "mean_alpha": 0.7724057160246159,
+    "median_alpha": 0.7530500049116671,
+    "std_alpha": 0.13560923989169144,
+    "p25_alpha": 0.7115765780093992,
+    "p75_alpha": 0.8581521303228983,
+    "categories": {
+      "1/f (non-Markovian memory)": 6
+    },
+    "frac_non_markovian": 1.0
+  },
+  {
+    "file": "gsm8k_cr_validation_qwen3_235b.jsonl",
+    "n_sequences": 391,
+    "n_with_fit": 376,
+    "n_reliable_r2_gt_0.3": 7,
+    "mean_alpha": 0.9482930207538215,
+    "median_alpha": 0.8934941469895276,
+    "std_alpha": 0.2373469995976715,
+    "p25_alpha": 0.7438149679409485,
+    "p75_alpha": 1.2080352714148441,
+    "categories": {
+      "1/f (non-Markovian memory)": 7
+    },
+    "frac_non_markovian": 1.0
+  },
+  {
+    "file": "mixed_eval_v3_multijudge_liquid.jsonl",
+    "n_sequences": 190,
+    "n_with_fit": 190,
+    "n_reliable_r2_gt_0.3": 2,
+    "mean_alpha": 0.8585315483563489,
+    "median_alpha": 0.8585315483563489,
+    "std_alpha": 0.050550427220674654,
+    "p25_alpha": 0.8332563347460116,
+    "p75_alpha": 0.8838067619666862,
+    "categories": {
+      "1/f (non-Markovian memory)": 2
+    },
+    "frac_non_markovian": 1.0
+  },
+  {
+    "file": "temp_sweep_logprobs_full.jsonl",
+    "n_sequences": 168,
+    "n_with_fit": 168,
+    "n_reliable_r2_gt_0.3": 0,
+    "mean_alpha": null,
+    "median_alpha": null,
+    "std_alpha": null,
+    "p25_alpha": null,
+    "p75_alpha": null,
+    "categories": {},
+    "frac_non_markovian": null
+  },
+  {
+    "file": "creativity_temperature_sweep.jsonl",
+    "n_sequences": 159,
+    "n_with_fit": 159,
+    "n_reliable_r2_gt_0.3": 1,
+    "mean_alpha": -0.8287550501740704,
+    "median_alpha": -0.8287550501740704,
+    "std_alpha": 0.0,
+    "p25_alpha": -0.8287550501740704,
+    "p75_alpha": -0.8287550501740704,
+    "categories": {
+      "anti-correlated": 1
+    },
+    "frac_non_markovian": 0.0
+  }
+]
