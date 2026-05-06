@@ -6,6 +6,8 @@
 
 ## A
 
+- **Albert, D. Z. (1996).** "Elementary Quantum Metaphysics." In Cushing, J. T., Fine, A., & Goldstein, S. (Eds.), *Bohmian Mechanics and Quantum Theory: An Appraisal* (pp. 277–284). Kluwer Academic. ✓ Cited §1.3 — configuration-space realism (CSR) original formulation.
+- **Albert, D. Z. (2013).** "Wave Function Realism." In Ney, A. & Albert, D. Z. (Eds.), *The Wave Function: Essays on the Metaphysics of Quantum Mechanics* (pp. 52–57). Oxford University Press. ✓ Cited §1.3 — CSR developed: wave-function as fundamental, 3D space as emergent projection.
 - **Altland, A. & Simons, B. (2010).** *Condensed Matter Field Theory* (2nd ed.). Cambridge University Press. ✓ Cited §3, §5D — Keldysh formalism canonical reference.
 - **Anderson, P. W. (1958).** "Absence of diffusion in certain random lattices." *Physical Review* 109(5):1492–1505. ✓ Cited expansion log — Anderson localization as substrate-restriction.
 - **Arrhenius, S. (1889).** "Über die Reaktionsgeschwindigkeit bei der Inversion von Rohrzucker durch Säuren." *Zeitschrift für Physikalische Chemie* 4:226–248. ✓ Cited §1.5 case #3 — original Arrhenius equation $k = A e^{-E_a/k_B T}$ for temperature-dependent reaction rates. **Note**: pre-DOI historical publication; reference is to the original 1889 *Z. Phys. Chem.* article. Modern presentations standard in any physical chemistry textbook (e.g., Atkins-de Paula *Physical Chemistry* 11th ed. ch. 17).
@@ -95,6 +97,7 @@
 ## L
 
 - **Landauer, R. (1961).** "Irreversibility and heat generation in the computing process." *IBM J. Res. Dev.* 5:183–91. ✓ Cited §2.2 (A5), §3.3 step 8, §5E — Landauer bound.
+- **Loewer, B. (1996).** "Humean Supervenience." *Philosophical Topics* 24(1):101–127. DOI: 10.5840/philtopics199624112. ✓ Cited §1.3 — configuration-space realism complementary argument; treats 3D space as appearance of higher-dimensional reality.
 - **Levitin, L. B. & Toffoli, T. (2009).** "Fundamental limit on the rate of quantum dynamics: the unified bound is tight." *Phys. Rev. Lett.* 103:160502. ✓ Cited §6 gap #6 — unified quantum speed limit.
 - **Limpert, E., Stahel, W. A., & Abbt, M. (2001).** "Log-normal distributions across the sciences: keys and clues." *BioScience* 51(5):341–52. ✓ Cited §6.5 — log-normal across substrates.
 - **Lloyd, S. (2000).** "Ultimate physical limits to computation." *Nature* 406:1047–54. ✓ Cited §5.2.5 — Margolus-Levitin × Bekenstein × Landauer "ultimate laptop" example.
@@ -113,6 +116,7 @@
 ## N
 
 - **Noether, E. (1918).** "Invariante Variationsprobleme." *Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen* 235–57. ✓ Cited §5E — Noether's theorem foundational.
+- **North, J. (2013).** "The Structure of a Quantum World." In Ney, A. & Albert, D. Z. (Eds.), *The Wave Function: Essays on the Metaphysics of Quantum Mechanics* (pp. 184–202). Oxford University Press. ✓ Cited §1.3 — configuration-space realism: 3N-dimensional configuration space as fundamental arena; 3D-space as emergent projection; lower-dimensional QM-interpretations as partial views of higher-dimensional dynamics.
 
 ## O
 
