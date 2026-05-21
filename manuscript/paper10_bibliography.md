@@ -54,8 +54,7 @@
 - **Feynman, R. P. & Vernon, F. L. Jr. (1963).** "The theory of a general quantum system interacting with a linear dissipative system." *Annals of Physics* 24:118–73. ✓ Cited §3.3, §5A, §5C — influence functional.
 - **Field, R. J. & Noyes, R. M. (1974).** "Oscillations in chemical systems. IV. Limit cycle behavior in a model of a real chemical reaction." *Journal of Chemical Physics* 60(5):1877–1884. DOI: 10.1063/1.1681288. ✓ Cited §1.5 case #3 — canonical mechanism for Belousov-Zhabotinsky oscillating reaction; the "Oregonator" three-variable model demonstrating limit-cycle stochastic-resonance behaviour in chemical substrate.
 - **Freidlin, M. I. & Wentzell, A. D. (1984).** *Random Perturbations of Dynamical Systems.* Springer. ✓ Cited §5D, §6.2 — large deviation theory.
-- **Friston, K. (2010).** "The free-energy principle: a unified brain theory?" *Nat. Rev. Neurosci.* 11(2):127–38. DOI: 10.1038/nrn2787. ✓ Cited §1.1, §4.3, §5C — FEP foundation.
-- **Friston, K. (2013).** "Life as we know it." *J. R. Soc. Interface* 10(86):20130475. ✓ Cited §5C — Markov blanket formalization.
+- **Friston, K. (2010).** "The free-energy principle: a unified brain theory?" *Nat. Rev. Neurosci.* 11(2):127–38. DOI: 10.1038/nrn2787. ✓ Cited §1.1 — predictive-processing tradition example, alongside Clark (2013) and Hohwy (2013).
 
 ## G
 
@@ -125,7 +124,6 @@
 ## P
 
 - **Page, D. N. (1993).** "Average entropy of a subsystem." *Phys. Rev. Lett.* 71:1291. ✓ Cited expansion log §17 — Page curve.
-- **Parr, T., Pezzulo, G., & Friston, K. (2022).** *Active Inference: The Free Energy Principle in Mind, Brain, and Behavior.* MIT Press. ✓ Cited §2.3, §4.3 — active inference reference.
 - **Paladino, E., Galperin, Y. M., Falci, G., & Altshuler, B. L. (2014).** "1/f noise: Implications for solid-state quantum information." *Reviews of Modern Physics* 86(2):361–418. DOI: 10.1103/RevModPhys.86.361. ✓ Cited §4.1 — comprehensive review of 1/f noise in superconducting qubits including TLS-defect mechanisms in dielectrics and Josephson-junction oxide barriers; methodology for joint 1/f-and-fidelity-curve diagnostic.
 - **Pound, R. V. & Rebka, G. A. (1959).** "Gravitational red-shift in nuclear resonance." *Phys. Rev. Lett.* 3(9):439–41. ✓ Cited §5.3 — first gravitational time-dilation experiment.
 - **Preskill, J. (2018).** "Quantum Computing in the NISQ era and beyond." *Quantum* 2:79. DOI: 10.22331/q-2018-08-06-79. ✓ Cited §1.5 — NISQ-era qubit operating window framing; decoherence-vs-control trade-off.
@@ -140,7 +138,6 @@
 
 - **Schlosshauer, M. & Fine, A. (2005).** "On Zurek's derivation of the Born rule." *Found. Phys.* 35:197–213. ✓ Cited §5A.8, §5A.9 — critique of envariance argument.
 - **Schwinger, J. (1961).** "Brownian motion of a quantum oscillator." *J. Math. Phys.* 2:407–32. ✓ Cited §3 — closed-time-path origin.
-- **Sengupta, B. & Friston, K. (2017).** "Approximate Bayesian inference as a gauge theory." *arXiv:1705.06614*. ✓ Cited §5C — path-integral FEP starting point.
 - **Smith, P. L. & Ratcliff, R. (2004).** "Psychology and neurobiology of simple decisions." *Trends in Neurosciences* 27(3):161–168. DOI: 10.1016/j.tins.2004.01.006. ✓ Cited §2.2 — review linking race-models to neural mechanisms.
 - **Smolin, L. (1997).** *The Life of the Cosmos.* Oxford University Press. ✓ Cited §9.2 — cosmological natural selection.
 - **Sornette, D. (2003).** *Why Stock Markets Crash: Critical Events in Complex Financial Systems.* Princeton University Press. ✓ Cited §6.2 — log-periodic power-law in pre-crash markets.

@@ -114,15 +114,7 @@ $$P[x(t)] \propto \exp\left(-\frac{1}{2D}\int dt\, \left(\dot{x} + \nabla U/\gam
 
 with Freidlin-Wentzell large-deviation commit to the most-probable path.
 
-### Corollary 3 (Biological Regime)
-
-For strongly dissipative environments with active internal degrees of freedom (Markov blanket), Onsager-Machlup + marginalisation → Friston variational free energy:
-
-$$F[q] = \langle \log q(\phi) - \log p(\phi, o)\rangle_q$$
-
-FEP minimisation = race commit in the biological substrate (Sengupta-Friston 2018).
-
-### Corollary 4 (Computational Substrate / LLM)
+### Corollary 3 (Computational Substrate / LLM)
 
 For discrete-time computational substrates, Paper 1's CR-signal
 
@@ -241,7 +233,7 @@ If one falls, the other stands. A4 is thereby robust against single-derivation c
 
 ---
 
-## 5B. CR-to-Keldysh mapping (unpacking Corollary 4)
+## 5B. CR-to-Keldysh mapping (unpacking Corollary 3)
 
 Corollary 4 claims that Paper 1's CR-signal (Competing Routes metric) from the LLM substrate is the discrete-time analog of the Keldysh response function. This section develops the mapping formally and states testable predictions against existing Paper 1 data.
 
@@ -323,103 +315,6 @@ Full analysis with limitations is provided in supplementary materials.
 
 ---
 
-## 5C. FEP derivation (unpacking Corollary 3)
-
-Corollary 3 claims that biological race = Friston variational free energy minimisation. This section develops the derivation formally via Schwinger-Keldysh → MSR → marginalisation over the Markov blanket.
-
-### 5C.1 Free energy principle recap
-
-Friston (2010) formalises biological inference as minimisation of variational free energy:
-
-$$F[q] = \mathbb{E}_{q(\phi)}[\log q(\phi) - \log p(\phi, o)]$$
-
-where $q(\phi)$ is the variational approximation to the true posterior $p(\phi|o)$ over internal states $\phi$, and $p(\phi, o)$ is the generative model over internal states and observations $o$.
-
-This decomposes as:
-
-$$F[q] = \underbrace{D_{KL}[q(\phi) \| p(\phi)]}_{\text{complexity}} - \underbrace{\mathbb{E}_q[\log p(o|\phi)]}_{\text{accuracy}}$$
-
-Minimisation of $F$ is the biological agent's commit mechanism: select $q^*$ that balances complexity and accuracy.
-
-### 5C.2 Markov blanket structure
-
-Friston (2013) specifies biological agents as systems with a *Markov blanket* — a conditional-independence structure separating internal states $\phi$ from external states $\eta$ via sensory states $s$ and active states $a$:
-
-$$p(\phi, s, a, \eta) = p(\phi | s, a) \cdot p(s | \eta) \cdot p(a | \phi) \cdot p(\eta)$$
-
-Blanket partition: $(\phi)$ agent-internal, $(s, a)$ blanket, $(\eta)$ environment.
-
-This structure has a direct QFT analog: Markov blanket = system-environment interface with explicit separation of degrees of freedom.
-
-### 5C.3 Derivation: Schwinger-Keldysh → FEP
-
-**Step 1.** Start with the total Schwinger-Keldysh generating functional for the bipartite agent-environment system:
-
-$$Z[J_+, J_-] = \int \mathcal{D}\phi_+ \mathcal{D}\phi_- \mathcal{D}\eta_+ \mathcal{D}\eta_-\, e^{iS_{\text{total}}[\phi, \eta]/\hbar}$$
-
-**Step 2.** Classical thermal limit ($\hbar \to 0$, finite $T$): the Keldysh branches collapse via fluctuation-dissipation $\to$ Martin-Siggia-Rose generating functional (biological substrates are effectively classical on cognitive timescales, per Corollary 2 derivation).
-
-$$Z_{\text{MSR}}[J] = \int \mathcal{D}\phi \mathcal{D}\eta \, e^{-S_{\text{MSR}}[\phi, \eta]/2D}$$
-
-**Step 3.** Impose the Markov blanket structure: decompose $S_{\text{MSR}}$ into blanket-conformant terms:
-
-$$S_{\text{MSR}}[\phi, \eta] = S_S[\phi, a] + S_B[s, a, \phi, \eta] + S_E[\eta, s]$$
-
-where the blanket coupling $S_B$ only couples $(\phi, a)$ to $(s, \eta)$ through blanket states.
-
-**Step 4.** Marginalise over external states $\eta$ conditional on observations $o = s$:
-
-$$Z_{\text{eff}}[J; o] = \int \mathcal{D}\phi \mathcal{D}a\, e^{-S_{\text{eff}}[\phi, a; o]/2D}$$
-
-where $S_{\text{eff}}$ includes effective coupling to observations via the Markov blanket's $p(s|\eta)$ structure.
-
-**Step 5.** Stationary-phase / saddle-point approximation for variational $q$:
-
-$$q^*(\phi) = \arg\min_{q} F[q]$$
-
-where $F[q]$ emerges from $S_{\text{eff}}$ via the standard variational thermodynamic formula:
-
-$$F[q] = \mathbb{E}_q[S_{\text{eff}}/2D] + S_{\text{entropy}}[q]$$
-
-For appropriate normalisation, this is *exactly* Friston's variational free energy with:
-- $\mathbb{E}_q[S_{\text{eff}}/2D] \leftrightarrow -\mathbb{E}_q[\log p(\phi, o)]$ (likelihood term from the action)
-- $S_{\text{entropy}}[q] \leftrightarrow \mathbb{E}_q[\log q(\phi)]$ (entropy term from Legendre transform)
-
-**Step 6.** Biological commit: the agent's state evolves toward $q^*$ via gradient flow on $F$:
-
-$$\partial_t q(\phi) = -\nabla_q F[q]$$
-
-This is standard Friston active inference dynamics. Convergence to $q^*$ is the biological race commit in the A4 sense.
-
-### 5C.4 Axiom mapping (Corollary 3)
-
-- **A1 (parallelism):** $q(\phi)$ is a distribution over an ensemble of candidate internal states
-- **A2 (competition):** variational optimisation weights candidates via $F[q]$ (competitive via likelihood × prior)
-- **A3 (constraint):** bounded compute $\to$ $q$ cannot reach the exact posterior; approximation is forced by time-budget
-- **A4 (commit):** $q^* = \arg\min F$ is the selected posterior (biological analog of pointer-basis selection)
-- **A5 (irreversibility):** free-energy minimisation is dissipative (Landauer analog in the biological substrate; ATP consumption per state change)
-
-### 5C.5 Sengupta-Friston reference
-
-Sengupta-Friston (2018) "How Markovian is the brain?" is a preliminary path-integral formulation of FEP. Full derivation-rigorisation is research-level work (their article is a starting point, not final).
-
-### 5C.6 Known critiques (FEP-specific)
-
-- **Colombo-Wright (2018):** FEP has been criticised for circularity — agents defined as free-energy minimisers, then claimed to minimise free energy
-- **Kirchhoff et al. (2018):** empirical vs. normative FEP distinction, some predictions may be tautological
-- **van Es (2021):** Markov blanket assumption may not be biologically realised
-- **Andrews (2021):** FEP vs. Bayesian brain distinction
-
-**Position.** We cite FEP as *mathematical* instantiation of variational inference under bounded compute. Corollary 3 shows mathematical equivalence; FEP-as-settled-neuroscience-theory is a separate question on which we take no stand.
-
-### 5C.7 Status
-
-Corollary 3 now has a formal derivation path from Schwinger-Keldysh via MSR + Markov blanket marginalisation to Friston variational free energy. Each step uses established mathematics; the only new move is to assemble them under the race lens.
-
-**Full rigour** requires a detailed Sengupta-Friston extension to arbitrary non-equilibrium regimes + rigorous convergence proof for the gradient flow on $F$. Paper 10 offers a derivation path; peer-review-grade proof is research-level work.
-
----
-
 ## 5D. Onsager-Machlup derivation (unpacking Corollary 2)
 
 Corollary 2 claims that classical stochastic race = Onsager-Machlup path integral with Freidlin-Wentzell commit. This section develops the derivation formally from Schwinger-Keldysh via the classical limit.
@@ -493,7 +388,7 @@ Large-deviation theory (Freidlin-Wentzell 1984) yields: the dominant path is the
 
 Corollary 2 now has a formal derivation chain: Schwinger-Keldysh → Keldysh rotation → classical limit → MSR → Onsager-Machlup + Freidlin-Wentzell. Each step uses established mathematics (Kamenev 2011 *Field Theory of Non-Equilibrium Systems* is canonical; Altland-Simons *Condensed Matter Field Theory* chapter on Keldysh is alternative).
 
-Completes the theoretical pyramid: 5A (Born rule via envariance), 5B (CR-Keldysh mapping), 5C (FEP via Markov blanket marginalisation), 5D (Onsager-Machlup via classical limit). All four corollaries of the main theorem now have formal unpackings.
+Completes the theoretical pyramid: 5A (Born rule via envariance), 5B (CR-Keldysh mapping), 5D (Onsager-Machlup via classical limit). The three corollaries of the main theorem now have formal unpackings.
 
 ---
 
@@ -621,7 +516,7 @@ The section adds no new theorems. It anchors existing race derivations in the No
 
    **Empirical note.** Fourier power-spectrum analysis of 4 LLM-substrate datasets shows $\alpha \in [0.08, 0.17]$ (close to white noise $\alpha = 0$), indicating Markovian dynamics. Assumption (ii) is empirically validated on the LLM substrate (see supplementary materials).
 3. **Envariance derivation details.** ~~gap~~ Addressed in Section 5A. Full peer-review rigour still requires explicit treatment of the Schlosshauer-Fine (2005) critique + parallel Deutsch-Wallace (2012) derivation as backup.
-4. **Active inference path-integral.** ~~gap~~ Addressed in Section 5C. SK → MSR → Markov blanket marginalisation → Friston $F[q]$ derivation in 6 steps with axiom-mapping. Full rigour requires peer-review-grade convergence proof + extension to non-equilibrium; backbone derivation-path is now established.
+4. **Biological-substrate corollary not claimed.** The biological-substrate scope of FT is established in Paper 1 §6 via race-model and substrate-physics machinery appropriate to that scope. A Paper 10 corollary deriving biological inference as a strict parameter-limit of the QM-substrate Schwinger-Keldysh derivation is not claimed here; the biological substrate's variational-inference dynamics are sufficiently distinct from quantum coherent dynamics that deriving them as a limit of one another is not the framework's strongest mode of unification.
 5. **CR-to-Keldysh mapping.** ~~gap~~ Addressed in Section 5B. Formal mapping via threshold functional on equal-time Keldysh component + four testable predictions against Paper 1 data. Full empirical validation awaits separate re-analysis work.
 6. **Quantum speed limit sharpness.** Margolus-Levitin in A3; the Levitin-Toffoli (2009) unified bound may be more appropriate.
 7. **Edge cases.** Closed quantum systems without environment = evaluation-only limit, not complete race. Explicit acknowledgment in paper.
