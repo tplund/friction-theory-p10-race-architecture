@@ -1,6 +1,6 @@
 # Paper 10 — Derivation Sketch (Companion Document)
 
-**Companion to**: *"Race all the way down, race all the way up: A substrate-universal race-architecture across quantum, classical, biological, and computational regimes"* (Paper 10 master). Working subtitle: "A Schwinger-Keldysh derivation with a universal inverted-U signature".
+**Companion to**: *"Race all the way down, race all the way up: A substrate-universal race-architecture across quantum, classical, biological, and computational regimes"* (Paper 10 master). Working subtitle: "A Schwinger-Keldysh representation theorem with kernel-conditional rate-parameter signatures".
 
 **Status:** First formalisation of race-axioms + main theorem. Mathematical sketch, not peer-review-grade rigorous. Details require further checking and elaboration in subsequent iteration.
 
@@ -73,7 +73,7 @@ $$S(\rho_E(t_{\text{commit}})) - S(\rho_E(0)) \geq k_B \ln 2 \cdot N_{\text{bits
 
 ## 3. Primary Theorem
 
-**Theorem (Race-Schwinger-Keldysh Equivalence):**
+**Theorem (Conditional Representation of race-axioms in Markovian decohering open quantum systems):**
 
 Let $(S, H_S, H_E, H_{SE})$ be a bipartite quantum system. Assume:
 
@@ -114,13 +114,13 @@ $$P[x(t)] \propto \exp\left(-\frac{1}{2D}\int dt\, \left(\dot{x} + \nabla U/\gam
 
 with Freidlin-Wentzell large-deviation commit to the most-probable path.
 
-### Corollary 3 (Computational Substrate / LLM)
+### Substrate-mapping (Computational Substrate / LLM)
 
 For discrete-time computational substrates, Paper 1's CR-signal
 
 $$\text{CR}(t) = |\{i : p_i(t) > \theta\}|$$
 
-is the discrete-time analog of the Keldysh response function $G^R$. Empirical anchor for race-axiom A2 in computational substrates.
+admits a structural mapping (under Gaussian-approximation assumptions, §4.3) to the equal-time Keldysh component $G^K(t,t)$ — the population/distribution-width observable in the Schwinger-Keldysh formalism, distinct from the retarded response $G^R$ which measures linear-response to perturbation. CR tracks distribution width, hence equal-time $G^K$, not retarded $G^R$. This is *not* a strict parameter-limit of the §3 theorem (LLM token-generation is not a continuous-time field theory) but a structural correspondence providing empirical proxy for race-axiom A2 in computational substrates.
 
 ---
 
@@ -152,84 +152,9 @@ QED (sketch).
 
 ---
 
-## 5A. Envariance derivation for the Born rule (unpacking A4)
+## 5A. Born rule operationalisation (scope note)
 
-Race-axiom A4 states that the post-commit state has Born probabilities $p_i = |\langle i|\psi(0)\rangle|^2$. This section derives the Born rule from envariance (environment-assisted invariance, Zurek 2003, 2005), shifting it from "postulate" to "derived from race-bipartite-structure + einselection".
-
-### 5A.1 Setup
-
-Let the system-environment composite be in a pure state with Schmidt decomposition:
-
-$$|\Psi_{SE}\rangle = \sum_k \alpha_k |s_k\rangle_S |e_k\rangle_E$$
-
-with $\{|s_k\rangle\}$ and $\{|e_k\rangle\}$ orthonormal in $\mathcal{H}_S$ and $\mathcal{H}_E$, $\alpha_k \in \mathbb{C}$.
-
-### 5A.2 Envariance definition
-
-A transformation $U_S$ on the system is **envariant** if $\exists V_E$ on the environment such that:
-
-$$(U_S \otimes V_E) |\Psi_{SE}\rangle = |\Psi_{SE}\rangle$$
-
-The transformation can be "undone" by an environment-only operation.
-
-### 5A.3 Phase-envariance lemma
-
-For $U_S = \sum_k e^{i\phi_k} |s_k\rangle\langle s_k|$ (diagonal phase rotation in the Schmidt basis), the inverse is $V_E = \sum_k e^{-i\phi_k} |e_k\rangle\langle e_k|$:
-
-$$(U_S \otimes V_E) |\Psi_{SE}\rangle = \sum_k e^{i\phi_k} e^{-i\phi_k} \alpha_k |s_k\rangle|e_k\rangle = |\Psi_{SE}\rangle \quad \checkmark$$
-
-**Implication.** The reduced system state $\rho_S = \text{Tr}_E |\Psi_{SE}\rangle\langle\Psi_{SE}|$ cannot depend on the phases $\{\phi_k\}$ (since they can be "erased" by the environment without touching the system). Algebraic consistency forces decoherence:
-
-$$\rho_S = \sum_k |\alpha_k|^2 |s_k\rangle\langle s_k|$$
-
-Off-diagonal elements must vanish. This yields A4's pointer-basis diagonalisation.
-
-### 5A.4 Swap-envariance lemma
-
-For equal-amplitude Schmidt components $|\alpha_i| = |\alpha_j|$, the system swap $U_S: |s_i\rangle \leftrightarrow |s_j\rangle$ (with appropriate phase) is envariant if the environment swap $V_E: |e_i\rangle \leftrightarrow |e_j\rangle$ undoes it.
-
-**Implication.** $p_i = p_j$ whenever $|\alpha_i|^2 = |\alpha_j|^2$, by pure symmetry.
-
-### 5A.5 Fine-graining to rational amplitudes
-
-For $|\alpha_k|^2 = m_k/M$ rational, introduce $M$ virtual environmental ancillas: replace each Schmidt component with $m_k$ equal-amplitude sub-components. The composite state becomes:
-
-$$|\Psi_{SE}\rangle = \frac{1}{\sqrt{M}} \sum_k \sum_{j=1}^{m_k} |s_k\rangle |e_{k,j}\rangle$$
-
-with $M$ total equal-amplitude Schmidt components. Per 5A.4 each has probability $1/M$. The probability of $s_k$ is $m_k/M = |\alpha_k|^2$.
-
-### 5A.6 Continuity extension
-
-Rational amplitudes are dense; the Born rule $p_k = |\alpha_k|^2$ extends to all real $|\alpha_k|^2$ by continuity of the probability measure. Gleason's theorem (1957) is invoked for $\mathcal{H}_S$ with $\dim \geq 3$ to ensure unique probability assignment.
-
-### 5A.7 Result
-
-$$\boxed{p_i = |\langle i|\psi(0)\rangle|^2 \quad \text{(Born rule, derived from envariance)}}$$
-
-**Status.** The A4 Born rule is now *derived*, not *postulated*. The race-bipartite structure + einselection + envariance uniquely fix the probability measure.
-
-### 5A.8 Known critiques and alternative derivations
-
-- **Schlosshauer-Fine (2005):** critique of circularity in the fine-graining step (5A.5). Argues that ancilla introduction presumes the probability structure being derived.
-- **Zurek (2005, 2018) responses:** defends envariance by arguing that the environment-many-degrees-of-freedom assumption is physical, not circular.
-- **Deutsch-Wallace decision-theoretic derivation (1999, 2012):** alternative route. Rational agent + expected utility maximisation $\Rightarrow$ Born rule. Independent derivation; same conclusion.
-- **Wallace (2012) *The Emergent Multiverse*:** most rigorous Everett-compatible Born derivation via decision theory.
-
-**Strategy.** Cite both envariance and Deutsch-Wallace; convergence to the same Born rule from independent derivations gives robustness against single-derivation critique.
-
-### 5A.9 Explicit response to the Schlosshauer-Fine (2005) critique
-
-Schlosshauer-Fine (2005) argue that the envariance argument (5A.5) is circular: the fine-graining step introduces $M$ ancilla states to construct an equal-amplitude Schmidt decomposition, and this construction implicitly presumes a probability measure over ancillas — which is precisely what is to be derived.
-
-**Response (Zurek 2005).** Ancilla states are Hilbert-space vectors, not probability distributions. They do not introduce new probabilities but fine-grain the existing composite-state structure. The only "probability" invoked is via the swap-envariance symmetry argument (5A.4), which is purely structural — equal-amplitude states $|s_i\rangle, |s_j\rangle$ can be swapped without changing the composite state, so their probability assignment must be equal (by symmetry alone, no prior probability postulate).
-
-**Status.** Zurek's defence is defensible but actively disputed. Paper 10's robustness rests on a double derivation: *even if* Schlosshauer-Fine's critique holds, the Deutsch-Wallace (1999, 2012) decision-theoretic derivation yields the Born rule from a purely structural rationality argument without fine-graining. Convergence of two independent derivations to the same Born rule is stronger than any single derivation.
-
-**The paper cites both explicitly** as complementary derivations:
-- Zurek envariance: directly from bipartite state structure
-- Deutsch-Wallace: from rational-agent decision theory
-
-If one falls, the other stands. A4 is thereby robust against single-derivation critique.
+In the quantum parameter-limit (Corollary 1), A4b outcome-selection is operationalised by the Born rule $p_i = |langle i | psi(0) angle|^2$ as established empirical content. The framework does not attempt to derive the Born rule from race-axioms. Within the foundations literature, several derivations have been proposed (Zurek 2003, 2005 envariance argument; Deutsch 1999, Wallace 2012 decision-theoretic derivation), each contested in turn (Schlosshauer & Fine 2005 on envariance; Albert 2010 on decision-theoretic). The race-framework remains agnostic on which derivation succeeds — A4b's probability-measure is taken as empirical input rather than derived theorem. This avoids importing decades of contested foundations literature into Paper 10's argument while preserving the framework's ability to make falsifiable predictions on the rate-parameter dimension.
 
 ---
 
@@ -392,120 +317,9 @@ Completes the theoretical pyramid: 5A (Born rule via envariance), 5B (CR-Keldysh
 
 ---
 
-## 5E. Noether reformulation of race (symmetry ↔ conservation)
+## 5E. Noether and symmetry-breaking — speculative, not part of Paper 10 argument
 
-Noether's theorem (1918) states that every differentiable symmetry of a physical system's action produces a conservation law. This section shows that the race-framework is compatible with Noether structure, identifies which symmetries survive in open race-systems, develops envariance (Section 5A) as the primary race-Noether instance, and states a formal Proposition on the symmetry-commit duality.
-
-### 5E.1 Context: Noether in closed vs. open systems
-
-In closed systems (unitary QM, Hamiltonian mechanics) Noether gives direct conservation:
-- Time translation → energy
-- Space translation → momentum
-- Rotation → angular momentum
-- U(1) gauge → electric charge
-
-Race-systems are *open* (system + environment). This breaks some symmetries:
-- Environmental coupling typically breaks time-translation symmetry (environment has finite thermal bath → energy dissipation)
-- Commit events (A4) are discrete and break continuous symmetries
-- A5 irreversibility breaks time-reversal symmetry
-
-**Central question.** Which Noether conservations survive in race, and which become *quantised* at commit events?
-
-### 5E.2 Symmetries surviving within the evaluation phase
-
-Pre-commit ($t \ll \tau_c$) the system's dynamics is approximately unitary (Section 3 Theorem Step 5). Under this approximation:
-- The Hamiltonian action $S[\phi]$ has standard closed-system symmetries
-- Noether conservations apply *locally* over the evaluation-phase duration
-- For example, energy is conserved within system+environment (before coarse-graining over the environment)
-
-This is not new physics. It is the recognition that the race evaluation phase *is* standard unitary dynamics, so the Noether apparatus applies directly there.
-
-### 5E.3 Envariance as the primary race-Noether instance
-
-Zurek's envariance argument (Sections 5A.2–5A.7) is precisely a Noether-type argument in structural form:
-
-**Symmetry.** For the Schmidt-decomposed state $|\Psi_{SE}\rangle = \sum_k \alpha_k |s_k\rangle|e_k\rangle$, the transformation $U_S \otimes V_E$ (phase rotations on system, inverse phases on environment) leaves the state invariant — the composite system-environment is *envariant*.
-
-**Conservation law.** The reduced system state $\rho_S$ cannot depend on phases that can be annulled by environment alone. Algebraic consistency forces decoherence + Born-rule probability measure:
-
-$$\rho_S = \sum_k |\alpha_k|^2 |s_k\rangle\langle s_k|, \quad \sum_k p_k = 1$$
-
-**Conservation.** $\sum_k p_k = 1$ (probability-measure conservation) is race's primary Noether conservation, derived from envariance symmetry.
-
-**Consequence.** The Born rule is not a postulate but a Noether consequence of bipartite envariance symmetry. This gives Section 5A.7's result deeper structural anchoring.
-
-### 5E.4 Classical limit: Hamilton-Noether
-
-In Corollary 2's classical limit ($\hbar \to 0$) the path integral reduces to a stationary-phase-dominant classical trajectory. The classical Hamilton action has standard Noether conservations: energy (time translation), momentum (space translation), angular momentum (rotation). In the Onsager-Machlup regime with dissipative drift $F = -\nabla U/\gamma$:
-- Energy is *not* conserved (dissipates into environment)
-- Phase-space volume contracts (dissipation)
-- Probability normalisation ($\int P[x(t)] \mathcal{D}x = 1$) is conserved
-
-The last is analogous to the envariance conservation: Race preserves *probability*, even when other classical-mechanical conservations are broken.
-
-### 5E.5 Commit events as discrete symmetry breaking
-
-A4 commit selects one pointer state. This is discrete breaking of continuous symmetries:
-- Phase symmetry (continuous U(1)) is broken when one phase relation is fixed
-- Permutation symmetry between equal-amplitude states is broken by selection
-- Time-reversal symmetry is broken at commit (A5 irreversibility)
-
-**Landauer bound as quantised symmetry breaking.** Each commit-bit costs at least $k_B \ln 2$ entropy in the environment. This is *quantised* symmetry breaking: continuous symmetry is broken in discrete packets, each with a minimum entropy cost.
-
-**Analog to the Higgs mechanism.** In particle physics, spontaneous symmetry breaking breaks continuous gauge symmetry and produces massive particles. In race, commit breaks continuous evaluation-phase symmetry and produces *committed states* (massless evaluation → "massive" commit outcome). Structurally analogous; mathematics differs but is parallel.
-
-**Concrete examples of broken-symmetry-as-commit:**
-
-- **Ferromagnet magnetisation.** Rotation symmetry broken at the Curie temperature → commit to a specific magnetisation direction
-- **Higgs vacuum selection.** SU(2)×U(1) symmetry broken → commit to a specific vacuum configuration
-- **Crystallisation.** Translation symmetry broken → commit to a specific crystal-lattice orientation
-- **Biological morphogenesis.** Isotropy broken → commit to a body-axis
-
-This indicates a **general correspondence**: broken-symmetry events *are* race-commit events.
-
-### 5E.6 Formal statement
-
-**Proposition (race-Noether duality).** A continuous symmetry $\mathcal{S}$ of $S_{SK}$ is either (a) preserved through commit (giving a conserved quantity via Noether) or (b) broken at commit (corresponding to commit-event selection).
-
-Case (a): standard conservation laws (energy, momentum, probability).
-
-Case (b): order parameter $\mathcal{O}$ with $\langle \mathcal{O}\rangle_{\text{pre-commit}} = 0$, $\langle \mathcal{O}\rangle_{\text{post-commit}} \neq 0$. Commit is $\mathcal{S}$-breaking.
-
-### 5E.7 Axiom consequences
-
-- **A1 (parallelism):** under $\mathcal{S}$-invariance, all rotations of state are equivalent → degenerate candidates populate the evaluation phase
-- **A2 (competition):** interaction term $S_{\text{IF}}$ may break $\mathcal{S}$ → lifts degeneracy
-- **A4 (commit):** specific pointer-state selection = specific symmetry-breaking direction
-- **A5 (irreversibility):** post-commit, $\mathcal{S}$-breaking is locked in; entropy attached to direction-choice
-
-### 5E.8 Information conservation (open research)
-
-**Hypothesis.** The evaluation phase preserves an "information quantity" that is Noether-conserved under path-integral symmetries; commit events expropriate discrete amounts of this information to the environment (Landauer bound lower limit).
-
-Tentative formulation:
-- Define an information current $J^\mu_I$ analogous to the probability current in QM
-- Claim: $\partial_\mu J^\mu_I = 0$ in the evaluation phase (information continuity)
-- Commit breaks this by projecting onto the pointer basis; environment absorbs ejected information
-
-This is *open research direction*, not established derivation. Related work: Lloyd's "ultimate physical limits" (2000), Margolus-Levitin (1998), holographic-principle information bounds.
-
-### 5E.9 Testable predictions
-
-1. **Symmetry-breaking timescale = commit-timescale.** The race theorem predicts that time-to-symmetry-breaking scales as Margolus-Levitin: $\tau_c \geq \pi\hbar/(2E_{\text{gap}})$ where $E_{\text{gap}}$ is the energy gap between broken-symmetry states. Testable in condensed matter (e.g., spin-crossover systems).
-2. **Inverse-symmetry-breaking (commit-reversal) cost.** Reversing a symmetry-breaking commit requires Landauer energy $\geq k_B T \ln 2$ per bit. Testable in mechanical bistable systems.
-3. **LLM analogy.** Fine-tuning is symmetry-breaking of the pretrained model's isotropic parameter space. Fine-tuning cost (gradient-descent work) scales with tuning depth per Noether-Landauer.
-
-### 5E.10 Status and significance
-
-Section 5E reinterprets existing race derivations in Noether language:
-- **Envariance = label-permutation symmetry → Born-rule conservation** (rigorous, based on Section 5A)
-- **Classical limit Hamilton-Noether → standard classical conservations** (standard physics)
-- **Commit events = discrete symmetry breaking** (Landauer bound quantifies)
-- **Information conservation** (open research)
-
-The section adds no new theorems. It anchors existing race derivations in the Noether framework, strengthening the paper's positioning as "unified reading of existing physics" by showing that race conservation laws emerge from standard symmetry arguments.
-
-**Implication for peer review.** Physicists familiar with Noether but not race will recognise the envariance derivation as a Noether variant. This shifts the paper from "exploration of a new concept" to "reformulation in standard-physics language".
+Earlier drafts developed a Noether-style reformulation of race (symmetry ↔ conservation, commit as discrete symmetry-breaking, analogies to Higgs vacuum selection and ferromagnet magnetisation). On reflection these analogies extend the framework into territory that is structurally suggestive but not load-bearing for the Paper 10 argument, and they invite reviewer objections about cross-domain overreach. The Noether-style reformulation is therefore documented separately as a research note (not part of this manuscript) and is not claimed as part of Paper 10's contribution. Readers interested in the symmetry-breaking framing should consult the separate research note; the race-framework as developed in this paper does not depend on it.
 
 ---
 

@@ -11,7 +11,7 @@
 Race all the way down, race all the way up: A substrate-universal race-architecture across quantum, classical, biological, and computational regimes
 ```
 
-(Subtitle "A Schwinger-Keldysh derivation with a universal inverted-U signature" kan inkluderes i abstract eller som fodnote — arXiv har ikke separat subtitle-felt.)
+(Subtitle "A Schwinger-Keldysh representation theorem with kernel-conditional rate-parameter signatures" kan inkluderes i abstract eller som fodnote — arXiv har ikke separat subtitle-felt.)
 
 ### Authors
 ```
@@ -24,7 +24,7 @@ Email: tomas.lund@frictiontheory.org
 ### Abstract (arXiv har 1920-tegns grænse — denne er ~1700 tegn)
 
 ```
-We argue that "decision" in resource-bounded probabilistic systems is not a mental or agentive primitive but a substrate-universal structural phenomenon: the resolution of competing processes racing toward commit under a finite-time budget. Any system satisfying R1 (parallel candidates) + R2 (bounded resources) + R3 (irreversible commit) exhibits an inverted U on its evaluation-to-commit rate — too low yields no information processing, too high yields noise-dominated commit, and only the intermediate rate maximizes information throughput. Seven apparently independent phenomena — qubit decoherence-window, Ohm-Drude electron transport, chemistry/biochemistry molecular kinetics, stochastic resonance, Margolus-Levitin saturation, encoding-friction in learning, and Yerkes-Dodson — are manifestations of this single structural necessity across substrate scales spanning forty orders of magnitude in characteristic timescale. We refine R1-R3 to a five-axiom formulation A1-A5 appropriate for Schwinger-Keldysh derivation, and demonstrate that A1-A5 are satisfied by the closed-time-path generating functional of any bipartite quantum system with einselected pointer basis and Markovian environment. As corollaries we recover the Feynman path integral, Onsager-Machlup stochastic dynamics, the Friston free energy principle, and a CR-signal in large language models as parameter-regimes of one underlying derivation. Time emerges from commit-sequences. We engage interference, linearity-nonlinearity, and reversibility honestly: the framework relocates rather than solves the measurement problem.
+We explore the conjecture that "decision" in resource-bounded probabilistic systems may be better understood not as a mental or agentive primitive but as a substrate-universal structural phenomenon: the resolution of competing processes racing toward commit under a finite-time budget. The framework's strict structural prediction, conditional on R1 (parallel candidates with non-trivial competitive interference) + R2 (bounded resources) + R3 (irreversible commit) and on the substrate operating in a rate-range spanning both boundary regimes, is that the performance function on the evaluation-to-commit rate-parameter cannot be uniformly monotone — non-trivial interior structure is forced. The specific shape is substrate-distribution-specific: monotone-survival kernels (exponential-survival) yield single-peaked inverted-U; non-monotone kernels yield bimodal or U-shaped structures (counterexample acknowledged, Wallace personal communication 2026). We refine R1-R3 to a five-axiom formulation A1-A5 (with A3 split into kinematic ceiling [Margolus-Levitin] + dynamic dissipative timescale [Keldysh self-energy], A4 split into effective diagonalisation [Zurek einselection] + interpretation-relative outcome selection). A Conditional Representation Theorem shows that under three assumptions (einselection, Markovianity, thermal initial state) the closed-time-path generating functional satisfies A1-A5. Two parameter-limit corollaries recover the Feynman path integral (quantum) and Onsager-Machlup with Kramers-rate commit (classical). The CR-signal in large language models is presented as a complementary substrate-mapping under Gaussian-approximation assumptions, not a strict parameter-limit. Paper 10 proposes no new physics; it presents existing mathematics unified under race as a lens.
 ```
 
 ### Categories (arXiv subject classifications)
@@ -35,16 +35,16 @@ We argue that "decision" in resource-bounded probabilistic systems is not a ment
 **Cross-list**:
 1. `quant-ph` (Quantum Physics) — envariance Born-rule derivation, Zurek einselection, decoherence, three-hard-problems engagement
 2. `physics.gen-ph` (General Physics) — substrate-universal claim across physics/cognition/computation, foundations engagement
-3. `q-bio.NC` (Neurons and Cognition) — Friston FEP corollary, Yerkes-Dodson case #7, race-model tradition (Vickers/Ratcliff)
-4. `cs.CL` (Computation and Language) — LLM CR-signal as case #6 + Corollary 4 empirical anchor
-5. `nlin.AO` (Adaptation and Self-Organizing Systems) — substrate-universality of inverted-U, Belousov-Zhabotinsky chemical oscillators
+3. `q-bio.NC` (Neurons and Cognition) — Yerkes-Dodson case #7, race-model tradition (Vickers/Ratcliff)
+4. `cs.CL` (Computation and Language) — LLM CR-signal as case #6 + substrate-mapping (§4.3) empirical anchor
+5. `nlin.AO` (Adaptation and Self-Organizing Systems) — kernel-conditional inverted-U, Belousov-Zhabotinsky chemical oscillators
 
 (arXiv tillader 1 primary + max 3-5 cross-lists per submission — pick top 3 cross-lists based on which audiences you most want to reach.)
 
 ### Keywords (5-10, comma-separated)
 
 ```
-race architecture, Schwinger-Keldysh formalism, substrate-universal dynamics, inverted-U signature, decoherence and einselection, Friston free energy principle, large language models, Onsager-Machlup, stochastic resonance, Yerkes-Dodson
+race architecture, Schwinger-Keldysh representation theorem, kernel-conditional rate-parameter signatures, interior-structure (race-dynamics), decoherence and einselection, Onsager-Machlup with Kramers-rate commit, large language models (CR-signal substrate-mapping), Wallace counterexample (Lambert-W branch geometry), Yerkes-Dodson, falsification criterion (range-conditional)
 ```
 
 ### MSC Classification (mathematical subject codes — optional but useful)

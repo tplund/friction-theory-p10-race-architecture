@@ -41,12 +41,12 @@ ORCID: (insert if available — strongly recommended for citation tracking)
 ```
 Scope note: Friction Theory (FT, Pødenphant Lund 2026b) formalizes bounded probabilistic computation systems satisfying the race-axioms. FT's established scope covers biological, cognitive, and computational substrates (Papers 1–6). This paper investigates whether FT's mathematical structure scales to physics-scope substrates (quantum measurement, classical mechanics, thermodynamics).
 
-We argue that "decision" in resource-bounded probabilistic systems is not a mental or agentive primitive but a substrate-universal structural phenomenon: the resolution of competing processes racing toward commit under a finite-time budget. Any system satisfying R1 (parallel candidates) + R2 (bounded resources) + R3 (irreversible commit) exhibits an inverted U on its evaluation-to-commit rate — too low yields no information processing, too high yields noise-dominated commit, and only the intermediate rate maximizes information throughput. Seven apparently independent phenomena — qubit decoherence-window, Ohm-Drude electron transport, chemistry/biochemistry molecular kinetics, stochastic resonance, Margolus-Levitin saturation, encoding-friction in learning, and Yerkes-Dodson — are manifestations of this single structural necessity across substrate scales spanning forty orders of magnitude in characteristic timescale.
+We explore the conjecture that "decision" in resource-bounded probabilistic systems may be better understood not as a mental or agentive primitive but as a substrate-universal structural phenomenon: the resolution of competing processes racing toward commit under a finite-time budget. The framework's strict structural prediction, conditional on R1 (parallel candidates with non-trivial competitive interference) + R2 (bounded resources) + R3 (irreversible commit) and on the substrate operating in a rate-range spanning both boundary regimes, is that the performance function on the evaluation-to-commit rate-parameter cannot be uniformly monotone — non-trivial interior structure is forced. The specific shape is substrate-distribution-specific: monotone-survival kernels yield single-peaked inverted-U; non-monotone kernels yield bimodal or U-shaped structures (counterexample acknowledged, Wallace personal communication 2026; Lambert-W branch geometry on Erlang-2 kernel).
 
-We refine R1-R3 to a five-axiom formulation A1-A5 appropriate for Schwinger-Keldysh derivation, and demonstrate that A1-A5 are satisfied by the closed-time-path generating functional of any bipartite quantum system with einselected pointer basis and Markovian environment. As corollaries we recover the Feynman path integral, Onsager-Machlup stochastic dynamics, the Friston free energy principle, and a CR-signal in large language models as parameter-regimes of one underlying derivation. Time emerges from commit-sequences. We engage interference, linearity-nonlinearity, and reversibility honestly: the framework relocates rather than solves the measurement problem.
+We refine R1-R3 to a five-axiom formulation A1-A5 with sub-component splits (A3 = kinematic ceiling [Margolus-Levitin] + dynamic dissipative timescale [Keldysh self-energy]; A4 = effective diagonalisation [Zurek einselection] + interpretation-relative outcome selection [not derived within framework]) appropriate for Schwinger-Keldysh derivation. A Conditional Representation Theorem shows that under three explicit assumptions (einselection, Markovianity, thermal initial state) the closed-time-path generating functional satisfies A1-A5. Two parameter-limit corollaries recover the Feynman path integral (quantum, Corollary 1) and Onsager-Machlup stochastic dynamics with Kramers-rate commit (classical, Corollary 2). The CR-signal in large language models is presented as a complementary substrate-mapping (§4.3) under Gaussian-approximation assumptions — structural correspondence rather than strict parameter-limit. Paper 10 proposes no new physics; it presents existing mathematics unified under race as a lens.
 ```
 
-**Version**: `v1.0` (eller `2026-05-03` hvis dato-baseret versioning foretrækkes)
+**Version**: `v2.0` (substantial revision incorporating Wallace counterexample + post-hostile-review scope discipline; supersedes v1.0 2026-05-03)
 
 **Language**: `English (eng)`
 
@@ -54,15 +54,15 @@ We refine R1-R3 to a five-axiom formulation A1-A5 appropriate for Schwinger-Keld
 
 ```
 race architecture
-Schwinger-Keldysh formalism
-substrate-universal dynamics
-inverted-U signature
+Schwinger-Keldysh representation theorem
+kernel-conditional rate-parameter signatures
+interior-structure (race-dynamics)
 decoherence and einselection
-Friston free energy principle
-large language models
-Onsager-Machlup
-stochastic resonance
+Onsager-Machlup with Kramers-rate commit
+large language models (CR-signal substrate-mapping)
+Wallace counterexample (Lambert-W branch geometry)
 Yerkes-Dodson
+falsification criterion (range-conditional)
 friction theory
 quantum measurement
 substrate timescale
@@ -72,7 +72,7 @@ race-model tradition
 ### Additional notes (optional)
 
 ```
-Subtitle: A Schwinger-Keldysh derivation with a universal inverted-U signature.
+Subtitle: A Schwinger-Keldysh representation theorem with kernel-conditional rate-parameter signatures.
 
 Companion to Pødenphant Lund 2026b (Paper 1, Friction Theory master). Target peer-review venue: Foundations of Physics (primary), Synthese (secondary), Behavioral and Brain Sciences (fallback).
 
