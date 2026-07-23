@@ -28,11 +28,11 @@ data/
   paper10_analysis/*.json                  saved analysis outputs (the reference values quoted in the paper)
 figures/                                   the six figures as they appear in the paper
 manuscript/
-  paper10_english.md                       the manuscript master
-  paper10_bibliography.md                  annotated reference list
   paper10_derivation_details.md            derivation appendix: the CR-Keldysh substrate-mapping (§4.3)
                                            and the Onsager-Machlup classical-stochastic regime (§4.2)
 ```
+
+The paper itself is not duplicated here. The citable version of record is the Zenodo deposit linked above, which carries its own reference list; this repository holds the data, the code, and the derivation appendix the paper refers to.
 
 ## Reproduce
 

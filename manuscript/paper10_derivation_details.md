@@ -1,8 +1,8 @@
 # Paper 10 — Derivation Sketch (Companion Document)
 
-**Companion to**: *"Race all the way down, race all the way up: A substrate-universal race-architecture across quantum, classical, biological, and computational regimes"* (Paper 10 master). Working subtitle: "A Schwinger-Keldysh representation theorem with kernel-conditional rate-parameter signatures".
+**Companion to**: *"Race all the way down, race all the way up: A unifying vocabulary for bounded-commit dynamics across quantum, classical, biological, and computational substrates"* (Pødenphant Lund 2026, https://doi.org/10.5281/zenodo.20014567).
 
-**Status:** First formalisation of race-axioms + main theorem. Mathematical sketch, not peer-review-grade rigorous. Details require further checking and elaboration in subsequent iteration.
+**Status:** A mathematical sketch of the race-axioms and the main representation result. It is written at the level of a derivation sketch rather than a fully rigorous proof; steps that would need tightening for a formal treatment are flagged where they occur.
 
 **Cross-reference to master §1.5.** Paper 10 master §1.5 establishes the inverted-U signature deductively from R1+R2+R3 alone (substrate-free, requiring no Schwinger-Keldysh machinery). The deductive argument and seven-case empirical table cross-validate with this derivation: §1.5 establishes what any race-system must phenomenologically exhibit; the present derivation shows how the QM-substrate physically realises this via the Schwinger-Keldysh closed-time-path formalism. The two arguments are independent but mutually supporting.
 
@@ -154,7 +154,8 @@ QED (sketch).
 
 ## 5A. Born rule operationalisation (scope note)
 
-In the quantum parameter-limit (Corollary 1), A4b outcome-selection is operationalised by the Born rule $p_i = |langle i | psi(0) angle|^2$ as established empirical content. The framework does not attempt to derive the Born rule from race-axioms. Within the foundations literature, several derivations have been proposed (Zurek 2003, 2005 envariance argument; Deutsch 1999, Wallace 2012 decision-theoretic derivation), each contested in turn (Schlosshauer & Fine 2005 on envariance; Albert 2010 on decision-theoretic). The race-framework remains agnostic on which derivation succeeds — A4b's probability-measure is taken as empirical input rather than derived theorem. This avoids importing decades of contested foundations literature into Paper 10's argument while preserving the framework's ability to make falsifiable predictions on the rate-parameter dimension.
+In the quantum parameter-limit (Corollary 1), A4b outcome-selection is operationalised by the Born rule $p_i = |langle i | psi(0) 
+angle|^2$ as established empirical content. The framework does not attempt to derive the Born rule from race-axioms. Within the foundations literature, several derivations have been proposed (Zurek 2003, 2005 envariance argument; Deutsch 1999, Wallace 2012 decision-theoretic derivation), each contested in turn (Schlosshauer & Fine 2005 on envariance; Albert 2010 on decision-theoretic). The race-framework remains agnostic on which derivation succeeds — A4b's probability-measure is taken as empirical input rather than derived theorem. This avoids importing decades of contested foundations literature into Paper 10's argument while preserving the framework's ability to make falsifiable predictions on the rate-parameter dimension.
 
 ---
 
@@ -319,7 +320,7 @@ Completes the theoretical pyramid: 5A (Born rule via envariance), 5B (CR-Keldysh
 
 ## 5E. Noether and symmetry-breaking — speculative, not part of Paper 10 argument
 
-Earlier drafts developed a Noether-style reformulation of race (symmetry ↔ conservation, commit as discrete symmetry-breaking, analogies to Higgs vacuum selection and ferromagnet magnetisation). On reflection these analogies extend the framework into territory that is structurally suggestive but not load-bearing for the Paper 10 argument, and they invite reviewer objections about cross-domain overreach. The Noether-style reformulation is therefore documented separately as a research note (not part of this manuscript) and is not claimed as part of Paper 10's contribution. Readers interested in the symmetry-breaking framing should consult the separate research note; the race-framework as developed in this paper does not depend on it.
+A Noether-style reformulation of race is possible in principle — symmetry ↔ conservation, commit as discrete symmetry-breaking, with analogies to Higgs vacuum selection and ferromagnet magnetisation. It is not pursued here. The analogies are structurally suggestive but not load-bearing for the argument, and the framework as developed does not depend on them; they are noted only to mark the direction as available and deliberately unclaimed.
 
 ---
 
