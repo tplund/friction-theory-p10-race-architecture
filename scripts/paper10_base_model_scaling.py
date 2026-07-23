@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 from friktionsllm.together_client import TogetherClient
 from friktionsllm.friction.cr_utils import compute_cr_from_logprobs
 
-ROOT = Path("C:/_proj/FriktionsLLM")
+ROOT = Path(__file__).resolve().parents[1]  # repository root
 RESULTS_DIR = ROOT / "data" / "paper10_analysis"
 RESULTS_DIR.mkdir(exist_ok=True)
 OUTPUT_FILE = RESULTS_DIR / "base_model_scaling_20260424.jsonl"

@@ -15,7 +15,7 @@ import numpy as np
 from pathlib import Path
 from collections import Counter
 
-ROOT = Path("C:/_proj/FriktionsLLM")
+ROOT = Path(__file__).resolve().parents[1]  # repository root
 RESULTS = ROOT / "data" / "results"
 OUTPUT_DIR = ROOT / "data" / "paper10_analysis"
 

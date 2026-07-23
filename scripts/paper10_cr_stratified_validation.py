@@ -13,7 +13,7 @@ import numpy as np
 from pathlib import Path
 from scipy.optimize import curve_fit
 
-ROOT = Path("C:/_proj/FriktionsLLM")
+ROOT = Path(__file__).resolve().parents[1]  # repository root
 RESULTS_DIR = ROOT / "data" / "results"
 OUTPUT_DIR = ROOT / "data" / "paper10_analysis"
 OUTPUT_DIR.mkdir(exist_ok=True)

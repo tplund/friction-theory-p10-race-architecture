@@ -17,8 +17,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from pathlib import Path
 
-ROOT = Path("C:/_proj/FriktionsLLM")
-FIG_DIR = ROOT / "docs" / "figures" / "paper10"
+ROOT = Path(__file__).resolve().parents[1]  # repository root
+FIG_DIR = ROOT / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 ANALYSIS_DIR = ROOT / "data" / "paper10_analysis"
 

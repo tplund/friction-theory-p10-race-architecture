@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 from friktionsllm.ollama_client import OllamaClient
 from friktionsllm.friction.cr_utils import compute_cr_from_logprobs
 
-ROOT = Path("C:/_proj/FriktionsLLM")
+ROOT = Path(__file__).resolve().parents[1]  # repository root
 OUTPUT_DIR = ROOT / "data" / "paper10_analysis"
 OUTPUT_DIR.mkdir(exist_ok=True)
 OUTPUT_FILE = OUTPUT_DIR / "ollama_scaling_20260424.jsonl"
