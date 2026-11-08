@@ -8,13 +8,13 @@ This repository holds the per-token log-probability datasets, the analysis scrip
 
 The paper is a vocabulary-and-synthesis proposal rather than a new-physics paper, and its empirical component is correspondingly narrow. Language-model token generation is used as a **tractable substrate** in which bounded-commit dynamics can be measured directly, where the physical substrates the paper also organises (quantum decoherence, chemical kinetics, neural accumulation) cannot currently be instrumented at the relevant timescale.
 
-The measured quantity is **Competing Routes (CR)**: per generated token, the count of candidate next-tokens above a probability threshold in the pre-commit softmax distribution. CR is introduced in Paper 1 and used here as a structural analogue of an equal-time Keldysh (distribution-width) observable, under assumptions stated explicitly in §4.3. Two results are reported: CR autocorrelation decays **exponentially** across substrates (R² 0.980–0.997) with a commit-timescale τ_c that varies by substrate, and a small non-Markovian sub-population departs from that decay, validated against a Monte Carlo null.
+The measured quantity is **Competing Routes (CR)**: per generated token, the count of candidate next-tokens above a probability threshold in the pre-commit softmax distribution. CR is introduced in Paper 1 and used here as a structural analogue of an equal-time Keldysh (distribution-width) observable, under assumptions stated explicitly in §4.3. Two results are reported. First, CR carries no detectable memory beyond the adjacent token: the autocorrelation drops to near zero at the first lag on all five substrates, so an exponential fits well (R² 0.980–0.997 on the three count-instrumented substrates) but the fitted timescale is shorter than one token and is not a measurement of a commit timescale. This is reported as a consistency check on the mapping, not a test of it. Second, a sub-population of about 1 % of sequences shows a 1/f spectrum, against none in a matched white-noise Monte Carlo null.
 
 ## Layout
 
 ```
 scripts/                                   analysis + figure code (plain Python, no local package)
-  paper10_cr_autocorrelation_analysis.py   §4.3 main result: exponential CR-autocorrelation decay, per-substrate tau_c
+  paper10_cr_autocorrelation_analysis.py   §4.3: CR autocorrelation, stratified by instrument
   paper10_non_markovian_monte_carlo.py     Monte Carlo null for the non-Markovian sub-population
   paper10_non_markovian_scan.py            scan identifying that sub-population
   paper10_cr_stratified_validation.py      protocol validation: PSD + stratification by correctness
@@ -38,7 +38,7 @@ The paper itself is not duplicated here. The citable version of record is the Ze
 
 ```bash
 pip install -r requirements.txt
-python scripts/paper10_cr_autocorrelation_analysis.py    # §4.3 exponential decay + per-substrate tau_c
+python scripts/paper10_cr_autocorrelation_analysis.py    # §4.3 CR autocorrelation
 python scripts/paper10_non_markovian_monte_carlo.py      # Monte Carlo null
 python scripts/paper10_cr_stratified_validation.py       # protocol validation
 python scripts/paper10_figures.py                        # regenerate figures/

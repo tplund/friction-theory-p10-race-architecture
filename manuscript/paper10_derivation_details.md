@@ -1,30 +1,26 @@
 # Paper 10 — Derivation Sketch (Companion Document)
 
-**Companion to**: *"Race all the way down, race all the way up: A unifying vocabulary for bounded-commit dynamics across quantum, classical, biological, and computational substrates"* (Pødenphant Lund 2026, https://doi.org/10.5281/zenodo.20014567).
+Companion to *Race all the way down, race all the way up: A unifying vocabulary for bounded-commit dynamics across quantum, classical, biological, and computational substrates* (Pødenphant Lund 2026, https://doi.org/10.5281/zenodo.20014567).
 
-**Status:** A mathematical sketch of the race-axioms and the main representation result. It is written at the level of a derivation sketch rather than a fully rigorous proof; steps that would need tightening for a formal treatment are flagged where they occur.
+Status. This document gives the technical detail behind three parts of the paper: the representation of the race-axioms in Markovian decohering open quantum systems (master §3), the two parameter regimes of that representation (master §4.1 and §4.2), and the structural mapping between the language-model CR signal and an equal-time Keldysh observable (master §4.3). It is a sketch. The representation is an organisation of standard open-system results under the axioms, not a theorem with a proof, and the language-model mapping is an analogy under stated assumptions, not a parameter limit. Steps that would need tightening for a formal treatment are flagged where they occur.
 
-**Cross-reference to master §1.5.** Paper 10 master §1.5 establishes the inverted-U signature deductively from R1+R2+R3 alone (substrate-free, requiring no Schwinger-Keldysh machinery). The deductive argument and seven-case empirical table cross-validate with this derivation: §1.5 establishes what any race-system must phenomenologically exhibit; the present derivation shows how the QM-substrate physically realises this via the Schwinger-Keldysh closed-time-path formalism. The two arguments are independent but mutually supporting.
-
----
+Scope. The inverted-U discussed in master §1.4 is not derived here. The master treats its specific shape as kernel-conditional, a pattern shared by the catalogued cases rather than a consequence of the axioms alone, and nothing below bears on it.
 
 ## 1. Motivation
 
-**FT/BFT context.** Friction Theory (FT, Pødenphant Lund 2026b) formalises bounded probabilistic computation systems satisfying the race-axioms. FT's established scope covers biological, cognitive, and computational substrates (Papers 1–6). This derivation investigates whether FT's mathematical structure scales to physics-scope (quantum, classical, thermodynamics). This is *exploratory*; if the derivation holds formally in peer review, FT's scope may be upgraded to physics-universal. Until then we do *not* claim that established FT covers quantum / classical / thermodynamic substrates.
+Paper 10 proposes race as a shared vocabulary for bounded-commit dynamics: parallel evaluation of candidates, competition between them, a finite-time constraint, an irreversible commit. This sketch asks a narrower question. In one substrate where the physics is well understood, Markovian decohering open quantum systems, can the standard Schwinger-Keldysh treatment be read as satisfying the five race-axioms, and do the quantum and classical-stochastic regimes arise as parameter limits of the same generating functional? The answer sketched below is yes, under three explicit assumptions.
 
-Paper 10's core claim: Race is the framework's substrate-agnostic principle, mathematically instantiated via the Schwinger-Keldysh formalism. Classical and quantum race are parameter-limits of the same derivation, not separate phenomena.
-
-The present file formalises the five race-axioms (A1–A5) and states a main theorem: any quantum bipartite system with einselection satisfies A1–A5 via the standard Schwinger-Keldysh derivation, with classical / biological / computational regimes as parameter-limits.
-
----
+It does not show that quantum, classical, biological and computational systems share a single underlying derivation (master §1.3); it shows that the vocabulary applies in each.
 
 ## 2. Formal race-axioms
 
+The name and the accumulator reading come from the race models of decision research (Vickers 1970; Ratcliff 1978; Usher & McClelland 2001; Brown & Heathcote 2008), where parallel accumulators compete and the first to a threshold sets the outcome; master §2.2 sets out how the axioms below relate to that tradition. What follows states the axioms in a form general enough to apply to physical substrates.
+
 A race-system consists of:
-- **Configuration space** $\mathcal{C}$ (Hilbert space, classical phase space, or general measure space)
-- **State $\rho$** (density operator or probability measure on $\mathcal{C}$)
-- **Environment $E$** (bath of degrees of freedom)
-- **Time parameter $t \in [0, T]$**
+- a configuration space $\mathcal{C}$ (Hilbert space, classical phase space, or general measure space);
+- a state $\rho$ (density operator or probability measure on $\mathcal{C}$);
+- an environment $E$ (a bath of degrees of freedom);
+- a time parameter $t \in [0, T]$.
 
 ### A1 (Parallelism / Superposition)
 
@@ -32,11 +28,11 @@ The pre-commit state admits representation as a path-integral generating functio
 
 $$Z[J] = \int \mathcal{D}\phi\, e^{iS_{\text{eff}}[\phi]/\hbar_{\text{eff}}}\, \exp\left(i \int J\phi\, dt\right)$$
 
-Observable expectations are computed as functional derivatives. The integration measure $\mathcal{D}\phi$ over path-histories formalises "parallel evaluation".
+Observable expectations are computed as functional derivatives. The integration over path-histories $\mathcal{D}\phi$ is what "parallel evaluation" refers to.
 
 ### A2 (Competitive Interaction)
 
-Path histories carry weights $w[\phi] = e^{iS_{\text{eff}}[\phi]/\hbar_{\text{eff}}}$. The effective action includes an interaction kernel on the Schwinger-Keldysh closed-time-path contour:
+Path histories carry weights $w[\phi] = e^{iS_{\text{eff}}[\phi]/\hbar_{\text{eff}}}$. On the Schwinger-Keldysh closed-time-path contour the effective action includes a term coupling the two branches:
 
 $$S_{\text{eff}}[\phi_+, \phi_-] = S[\phi_+] - S[\phi_-] + S_{\text{diss}}[\phi_+, \phi_-]$$
 
@@ -44,312 +40,308 @@ The dissipation term $S_{\text{diss}}$ couples the branches and generates enviro
 
 ### A3 (Finite-Time Constraint)
 
-The commit-rate functional $\Gamma : (\text{States} \times \text{Environment}) \to [0, \infty)$ sets the commit-timescale $\tau_c = 1/\Gamma$. The Margolus-Levitin bound:
+A commit-rate functional $\Gamma : (\text{States} \times \text{Environment}) \to [0, \infty)$ sets the commit timescale $\tau_c = 1/\Gamma$. The kinematic floor is the Margolus-Levitin (1998) bound,
 
-$$\tau_c \geq \frac{\pi \hbar}{2 E_{\text{avg}}}$$
+$$\tau_c \geq \frac{\pi \hbar}{2 E_{\text{avg}}},$$
 
-For Schwinger-Keldysh: $\Gamma = \text{Im}(\Sigma^R)$ (imaginary part of the retarded self-energy).
+with $E_{\text{avg}}$ the mean energy above the ground state. In the Schwinger-Keldysh treatment the rate is set by the imaginary part of the retarded self-energy, $\Gamma(\omega) = -2\,\text{Im}\,\Sigma^R(\omega)$ evaluated on shell (conventions differ by the factor 2; $\text{Im}\,\Sigma^R < 0$ in the retarded convention).
 
 ### A4 (Commit / Selection)
 
-In the large-time limit $t \gg \tau_c$:
+For $t \gg \tau_c$:
 
 $$\rho_S(t \gg \tau_c) = \sum_i p_i |i\rangle\langle i|$$
 
-where:
-- Pointer basis selected by $[|i\rangle\langle i|, H_{SE}] \approx 0$ (Zurek 1981, 1982)
-- $p_i = |\langle i | \psi(0)\rangle|^2$ via Zurek envariance (2003, 2005)
-- Off-diagonal decay: $\rho_{ij}(t) = \rho_{ij}(0)\, e^{-\Gamma_{ij} t}$
+where the pointer basis is selected by $[|i\rangle\langle i|, H_{SE}] \approx 0$ (Zurek 1981, 1982), off-diagonal elements decay as $\rho_{ij}(t) = \rho_{ij}(0)\, e^{-\Gamma_{ij} t}$, and the weights $p_i = |\langle i | \psi(0)\rangle|^2$ are the Born probabilities, taken as empirical input (§5A).
 
 ### A5 (Irreversibility)
 
-Post-commit environment entanglement entropy:
+Where a commit includes a logically irreversible operation, erasing or resetting $N_{\text{bits}}$ raises the thermodynamic entropy of the environment by at least
 
-$$S(\rho_E(t_{\text{commit}})) - S(\rho_E(0)) \geq k_B \ln 2 \cdot N_{\text{bits}}$$
+$$\Delta S_E \geq k_B \ln 2 \cdot N_{\text{bits}}$$
 
-(Landauer 1961). Poincaré recurrence $T_P \gg t_{\text{observation}}$ gives effective irreversibility.
+(Landauer 1961). Other commit events produce entropy without falling under this specific bit-erasure bound.
 
----
+A Poincaré recurrence time $T_P \gg t_{\text{observation}}$ makes the irreversibility effective rather than absolute.
 
-## 3. Primary Theorem
+## 3. Representation result
 
-**Theorem (Conditional Representation of race-axioms in Markovian decohering open quantum systems):**
+Representation (race-axioms in Markovian decohering open quantum systems). Let $(S, H_S, H_E, H_{SE})$ be a bipartite quantum system, and assume:
 
-Let $(S, H_S, H_E, H_{SE})$ be a bipartite quantum system. Assume:
+- (i) Einselection: there is a pointer basis $\{|i\rangle_S\}$ with $[|i\rangle\langle i|, H_{SE}] \approx 0$.
+- (ii) Markovianity: the environment has macroscopically many degrees of freedom, so the reduced evolution is effectively Markovian.
+- (iii) Thermal initial state: $\rho(0) = \rho_S(0) \otimes \rho_E(0)$, with $\rho_E(0)$ in thermal equilibrium at temperature $T$.
 
-- **(i) Einselection:** $\exists$ pointer basis $\{|i\rangle_S\}$ with $[|i\rangle\langle i|, H_{SE}] \approx 0$
-- **(ii) Markovianity:** Environment has macroscopic degrees of freedom → effectively Markovian evolution
-- **(iii) Thermal initial state:** $\rho(0) = \rho_S(0) \otimes \rho_E(0)$, with $\rho_E(0)$ in thermal equilibrium at temperature $T$
-
-Then the reduced system dynamics, derived via the Schwinger-Keldysh generating functional
+Then the reduced system dynamics, obtained from the Schwinger-Keldysh generating functional
 
 $$Z[J_+, J_-] = \int \mathcal{D}\phi_+ \mathcal{D}\phi_-\, e^{iS[\phi_+]/\hbar - iS[\phi_-]/\hbar + iS_{\text{IF}}[\phi_+, \phi_-]}$$
 
-(where $S_{\text{IF}}$ is the Feynman-Vernon influence functional), satisfies **all race-axioms A1–A5**.
+(with $S_{\text{IF}}$ the Feynman-Vernon influence functional, written in units of $\hbar$ as in master §3.2), admits an organisation under the race-axioms A1–A5:
 
-Specifically:
-- **A1** via path-integration over the closed-time-path contour
-- **A2** via amplitude interference + dissipation kernel
-- **A3** via $\Gamma = \text{Im}(\Sigma^R)$; $\tau_c \sim \hbar/k_B T$ for thermal environment
-- **A4** via pointer-basis diagonalisation + Zurek envariance
-- **A5** via environment entanglement entropy growth
+- A1 corresponds to path integration over the closed-time-path contour;
+- A2 to amplitude interference together with the dissipation kernel;
+- A3 to the damping rate $\Gamma = -2\,\text{Im}\,\Sigma^R$, which depends on the coupling and the spectrum of the bath; $\hbar/k_B T$ is the bath's thermal correlation time, a separate scale, and the Margolus-Levitin bound is a third;
+- A4 to pointer-basis diagonalisation, with Born weights as input;
+- A5 to entropy production in the environment, bounded by Landauer where bits are erased.
 
----
+Every ingredient is standard. What the section adds is the reading: the same five-axiom organisation used elsewhere in the paper can be read directly off this formalism.
 
-## 4. Corollaries — parameter-limits
+## 4. Parameter regimes
 
-### Corollary 1 (Quantum Regime)
+### Regime 1 (quantum)
 
-For $D \to 0$ (weak noise, $\hbar$ finite), race reduces to the coherent Feynman path integral:
+For $D \to 0$ (vanishing environmental noise, $\hbar$ finite) the generating functional reduces to the coherent Feynman path integral,
 
-$$Z \to K(B, t_B; A, t_A) = \int \mathcal{D}x(t)\, e^{iS[x(t)]/\hbar}$$
+$$Z \to K(B, t_B; A, t_A) = \int \mathcal{D}x(t)\, e^{iS[x(t)]/\hbar},$$
 
-with Born probabilities $P(A \to B) = |K|^2$ emerging from envariance in subsequent measurement.
+with outcome probabilities $P(A \to B) = |K|^2$ supplied by the Born rule at a subsequent measurement (§5A).
 
-### Corollary 2 (Classical Stochastic Regime)
+### Regime 2 (classical stochastic)
 
-For $\hbar \to 0$ (classical limit) with finite $D$, the Keldysh branches collapse via fluctuation-dissipation → MSR → Onsager-Machlup:
+For $\hbar \to 0$ with finite noise intensity $D$, the Keldysh branches collapse to the Martin-Siggia-Rose form and then to the Onsager-Machlup path probability. With the noise convention $\langle\eta(t)\eta(t')\rangle = 2D\,\delta(t-t')$ used in §5C,
 
-$$P[x(t)] \propto \exp\left(-\frac{1}{2D}\int dt\, \left(\dot{x} + \nabla U/\gamma\right)^2\right)$$
+$$P[x(t)] \propto \exp\left(-\frac{1}{4D}\int dt\, \left(\dot{x} + \nabla U/\gamma\right)^2\right),$$
 
-with Freidlin-Wentzell large-deviation commit to the most-probable path.
+and in the weak-noise limit the Freidlin-Wentzell large-deviation result concentrates the commit on the minimum-action path.
 
-### Substrate-mapping (Computational Substrate / LLM)
+### Substrate-mapping (computational substrate / language model)
 
-For discrete-time computational substrates, Paper 1's CR-signal
+This is not a third parameter limit. Language-model token generation is not a continuous-time field theory and has no natural continuum limit. What §5B develops instead is a structural analogy between Paper 1's Competing Routes count,
 
-$$\text{CR}(t) = |\{i : p_i(t) > \theta\}|$$
+$$\text{CR}(t) = |\{w : p_w(t) > \theta\}|,$$
 
-admits a structural mapping (under Gaussian-approximation assumptions, §4.3) to the equal-time Keldysh component $G^K(t,t)$ — the population/distribution-width observable in the Schwinger-Keldysh formalism, distinct from the retarded response $G^R$ which measures linear-response to perturbation. CR tracks distribution width, hence equal-time $G^K$, not retarded $G^R$. This is *not* a strict parameter-limit of the §3 theorem (LLM token-generation is not a continuous-time field theory) but a structural correspondence providing empirical proxy for race-axiom A2 in computational substrates.
+and the equal-time Keldysh component $G^K(t,t)$, the distribution-width observable of the formalism, as distinct from the retarded response $G^R$, which measures linear response to a perturbation. CR tracks distribution width, so the comparison is to $G^K(t,t)$, not to $G^R$. The analogy holds only under the assumptions listed in §5B.3.
 
----
+## 5. Construction sketch
 
-## 5. Proof Sketch
-
-**Step 1.** Total system partition function on the Schwinger-Keldysh contour $C = C_+ \cup C_-$:
+Step 1. Write the partition function of system plus environment on the Schwinger-Keldysh contour $C = C_+ \cup C_-$:
 
 $$Z = \text{Tr}\left[T_C \exp\left(-i \int_C dt\, H\right) \rho(0)\right]$$
 
-**Step 2.** Integrate out the environment (assumption (iii)). The result is an effective generating functional over the system fields:
+Step 2. Integrate out the environment, using assumption (iii). The result is an effective generating functional over the system fields (Feynman & Vernon 1963):
 
-$$Z_{\text{eff}}[J_+, J_-] = \int \mathcal{D}\phi_+ \mathcal{D}\phi_-\, \exp\{iS_S[\phi_+] - iS_S[\phi_-] + iS_{\text{IF}}[\phi_+, \phi_-]\}$$
+$$Z_{\text{eff}}[J_+, J_-] = \int \mathcal{D}\phi_+ \mathcal{D}\phi_-\, \exp\{iS_S[\phi_+]/\hbar - iS_S[\phi_-]/\hbar + iS_{\text{IF}}[\phi_+, \phi_-]\}$$
 
-(Feynman-Vernon 1963)
+The integration over both branches corresponds to A1.
 
-**Step 3.** For Markovian environment (assumption (ii)), $S_{\text{IF}}$ has local-in-time form with dissipative kernel $\eta$ and noise kernel $\nu$.
+Step 3. For a Markovian environment (assumption (ii)), $S_{\text{IF}}$ takes a local-in-time form with a dissipative kernel $\eta$ and a noise kernel $\nu$. The branch coupling these kernels introduce corresponds to A2.
 
-**Step 4.** Rotate to Keldysh basis: $\phi_{cl} = (\phi_+ + \phi_-)/2$, $\phi_q = \phi_+ - \phi_-$. Dissipation renders the $\phi_q$ propagator damped at rate $\Gamma$.
+Step 4. Rotate to the Keldysh basis, $\phi_{cl} = (\phi_+ + \phi_-)/2$ and $\phi_q = \phi_+ - \phi_-$. Dissipation damps the $\phi_q$ propagator at rate $\Gamma$.
 
-**Step 5.** For $t \gg \tau_c = 1/\Gamma$, $\phi_q$ is suppressed → semiclassical dynamics in $\phi_{cl}$. Establishes **A3, A4**.
+Step 5. For $t \gg \tau_c = 1/\Gamma$ the quantum field $\phi_q$ is suppressed and the dynamics become semiclassical in $\phi_{cl}$. The damping rate setting the timescale corresponds to A3.
 
-**Step 6.** Pointer basis emerges as eigenstates of the dominant effective potential. Off-diagonal elements suppressed as $e^{-\Gamma t}$ (Zurek einselection). Establishes **A4**.
+Step 6. Under assumption (i), the effective dynamics single out the pointer basis as the eigenstates of the dominant effective potential, with off-diagonal elements suppressed as $e^{-\Gamma t}$ (Zurek einselection). This corresponds to A4.
 
-**Step 7.** Born rule via Zurek envariance argument + Gleason's theorem.
+Step 7. The weights on the pointer states are the Born probabilities, taken as input (§5A).
 
-**Step 8.** Environment entanglement entropy $\Delta S_E \geq k_B \ln 2 \cdot N_{\text{bits}}$ via Landauer. Establishes **A5**.
+Step 8. Entropy is produced in the environment; where the commit includes logically irreversible erasure, it is at least $k_B \ln 2 \cdot N_{\text{bits}}$ (Landauer 1961). This corresponds to A5.
 
-QED (sketch).
+Points that need tightening for a formal treatment are listed in §6.
 
----
+## 5A. Born rule (scope note)
 
-## 5A. Born rule operationalisation (scope note)
+In the quantum regime, outcome selection is operationalised by the Born rule $p_i = |\langle i | \psi(0)\rangle|^2$ as established empirical content. The framework does not attempt to derive the Born rule from the race-axioms. Several derivations have been proposed in the foundations literature (Zurek 2003, 2005, the envariance argument; Deutsch 1999 and Wallace 2012, the decision-theoretic derivation), and each has been contested (for envariance, Schlosshauer & Fine 2005). The race framework is agnostic on which succeeds: the probability measure is an empirical input rather than a derived result.
 
-In the quantum parameter-limit (Corollary 1), A4b outcome-selection is operationalised by the Born rule $p_i = |langle i | psi(0) 
-angle|^2$ as established empirical content. The framework does not attempt to derive the Born rule from race-axioms. Within the foundations literature, several derivations have been proposed (Zurek 2003, 2005 envariance argument; Deutsch 1999, Wallace 2012 decision-theoretic derivation), each contested in turn (Schlosshauer & Fine 2005 on envariance; Albert 2010 on decision-theoretic). The race-framework remains agnostic on which derivation succeeds — A4b's probability-measure is taken as empirical input rather than derived theorem. This avoids importing decades of contested foundations literature into Paper 10's argument while preserving the framework's ability to make falsifiable predictions on the rate-parameter dimension.
+## 5B. CR-to-Keldysh structural mapping (detail for master §4.3)
 
----
+The substrate-mapping proposes that Paper 1's CR count on a language model is structurally analogous to the equal-time Keldysh component, a distribution-width observable. This section states the mapping, its assumptions, the predictions it makes, and how far the existing data go.
 
-## 5B. CR-to-Keldysh mapping (unpacking Corollary 3)
+### 5B.1 CR definition
 
-Corollary 4 claims that Paper 1's CR-signal (Competing Routes metric) from the LLM substrate is the discrete-time analog of the Keldysh response function. This section develops the mapping formally and states testable predictions against existing Paper 1 data.
+For token generation at step $t$ with vocabulary $W$:
+- logit vector $l(t) \in \mathbb{R}^{|W|}$;
+- softmax at temperature $T$: $p_w(t) = \exp(l_w(t)/T)/Z(t)$;
+- CR count: $\text{CR}(t) = |\{w : p_w(t) > \theta\}|$ for a threshold $\theta$.
 
-### 5B.1 CR-signal definition (from Paper 1)
+Two measurement facts govern every number in §5B.7. First, the mapping is defined on the count. Paper 1 also uses a ratio quantity under the name CR (the top-two probability ratio), and which of the two a dataset stores is a precondition for reading it. Second, served models return only the top-$k$ alternatives per position, so a count computed from them is censored at $k$.
 
-For LLM token-generation at step $t$ with vocabulary $W$:
-- Logit vector $l(t) \in \mathbb{R}^{|W|}$
-- Softmax distribution at temperature $T$: $p_w(t) = \exp(l_w(t)/T)/Z(t)$
-- **CR signal:** $\text{CR}(t) = |\{w : p_w(t) > \theta\}|$ for threshold $\theta$
+### 5B.2 Keldysh components (continuum)
 
-CR measures the number of tokens with significant mass in the pre-commit distribution.
+After rotation to the classical/quantum basis, $\phi_c = (\phi_+ + \phi_-)/2$ and $\phi_q = \phi_+ - \phi_-$, the two response functions are:
+- retarded: $G^R(t, t') = -i\theta(t-t')\langle[\phi(t), \phi(t')]\rangle$;
+- Keldysh: $G^K(t, t') = -i\langle\{\phi(t), \phi(t')\}\rangle$, which carries the population and distribution information.
 
-### 5B.2 Keldysh response function (continuum)
+The equal-time component $G^K(t,t)$ is the symmetric correlator, which for a Gaussian field is the variance; it is this quantity the mapping treats as the distribution width.
 
-In Schwinger-Keldysh, after rotation to classical/quantum basis:
-- $\phi_c = (\phi_+ + \phi_-)/2$
-- $\phi_q = \phi_+ - \phi_-$
+### 5B.3 The mapping and its assumptions
 
-Response functions:
-- Retarded: $G^R(t, t') = -i\theta(t-t')\langle[\phi(t), \phi(t')]\rangle$
-- Keldysh: $G^K(t, t') = -i\langle\{\phi(t), \phi(t')\}\rangle$ (population/distribution encoding)
+The mapping reads CR as a threshold functional of a discretised Keldysh observable,
 
-The equal-time Keldysh component $G^K(t,t)$ measures the distribution width at time $t$.
+$$\text{CR}(t) \approx \mathcal{F}_\theta\left[G^K_{\text{LLM}}(t,t)\right],$$
 
-### 5B.3 Formal mapping (claim)
+under three assumptions:
 
-CR, as an equal-time distribution-width estimator, maps to a discretised Keldysh observable:
+- Gaussian approximation. Around its mode, and under some ordering of the candidate tokens, the per-step softmax is approximately Gaussian with variance $\sigma^2(t)$, and $\sigma^2(t)$ tracks the width $G^K(t,t)$. Tokens have no natural metric ordering, so this is the strongest of the three assumptions.
+- Discretisation. The integer count approximates the continuous threshold functional.
+- Markovian modes. The effective decay rate $\Gamma_{\text{eff}}$ of the discrete process inherits the Markovian-modes structure of §3.
 
-$$\text{CR}(t) \approx \mathcal{F}_\theta\left[G^K_{LLM}(t,t)\right]$$
+Under the Gaussian approximation, with peak probability $p_{\max}(t)$, the tokens above threshold are those within $\sigma(t)\sqrt{2\ln(p_{\max}/\theta)}$ of the mode, so
 
-where $\mathcal{F}_\theta$ is a threshold functional. For Gaussian approximation: if $p_w(t)$ is approximately Gaussian about its mode with variance $\sigma^2(t) \propto G^K(t,t)$, then:
+$$\text{CR}(t) \approx 2\,\sigma(t)\sqrt{2\ln\!\big(p_{\max}(t)/\theta\big)}\;\propto\;\sigma(t) \propto \sqrt{G^K(t,t)}$$
 
-$$\text{CR}(t) \approx \sigma(t) \cdot \sqrt{\ln(1/\theta)}$$
+at fixed $p_{\max}$ and $\theta$. The proportionality to $\sigma$ is the content the mapping uses; the prefactor depends on $\theta$ and on the mode height.
 
-CR scales as $\sigma(t) \propto \sqrt{G^K(t,t)}$.
+### 5B.4 Decay rate
 
-### 5B.4 Decoherence-rate mapping
+A3's commit timescale $\tau_c = 1/\Gamma$ has a formal analogue on the language-model substrate in an effective decay rate $\Gamma_{\text{eff}}$, which the analogy would let depend on softmax temperature and context. The energy scale in the Margolus-Levitin bound has no counterpart defined for this substrate, so the bound is noted only as the formal analogue and is not used. The observable consequence the mapping carries is the autocorrelation prediction in §5B.5.
 
-A3 states the commit-timescale $\tau_c = 1/\Gamma$. For the LLM substrate:
-- Effective decoherence rate $\Gamma_{\text{eff}} \propto 1/T$ (softmax temperature)
-- Margolus-Levitin: $\tau_c \geq \pi\hbar_{\text{eff}}/(2E_{\text{eff}})$
-- $k_B T_{\text{eff}}$ sets the effective thermal energy scale
+### 5B.5 Predictions and what they discriminate
 
-Empirical prediction:
+1. Autocorrelation. $C_{\text{CR}}(\tau) = \langle\text{CR}(t)\,\text{CR}(t+\tau)\rangle_t$ should decay exponentially on a timescale $1/\Gamma_{\text{eff}}$. Exponential autocorrelation is generic for short-memory token-level series, so agreement is consistency, not confirmation.
+2. Temperature. CR is a non-monotonic function of softmax $T$ with a peak at intermediate $T$. At low $T$ the softmax concentrates its mass on the argmax and few tokens clear the threshold; at intermediate $T$ the distribution broadens and more do; at high $T$ it approaches uniform $1/V$, and once $1/V < \theta$ none can. The peak position depends on $V$ and $\theta$. This follows from thresholding a softmax and does not discriminate the mapping from any other account of a thresholded softmax.
+3. Context length. Longer context should modify $\Gamma_{\text{eff}}$, and CR profiles should reflect it. Not tested.
+4. Correctness. Paper 1 reports that CR correlates with error at $\rho = -0.423$ ($p < 0.0001$). The mapping is consistent with this: high CR means a wide pre-commit distribution and so a higher chance that sampling lands on a wrong token. Any account in which a wider distribution means more sampling error predicts the same correlation, so it does not discriminate either.
 
-$$\text{CR}(t) \propto \exp(-\Gamma_{\text{eff}} \cdot t_{\text{internal}})$$
+### 5B.6 Discrete-time limits
 
-### 5B.5 Testable predictions against Paper 1 data
+Token generation is discrete and the continuum Keldysh formalism is not. Known limitations:
+- CR is integer-valued, which adds quantisation noise to $\mathcal{F}_\theta$, and censored at $k$ when read from top-$k$ lists.
+- The time step is the forward pass, not a physical timescale.
+- Attention gives the model access to the whole context, a form of non-Markovian memory that the Markovian-modes assumption idealises away.
 
-If the mapping holds:
+Extending the mapping to non-Markovian Keldysh treatments is research-level work (§6, item 2).
 
-1. **Autocorrelation decay.** $C_{\text{CR}}(\tau) = \langle\text{CR}(t)\text{CR}(t+\tau)\rangle_t$ should decay exponentially on timescale $1/\Gamma_{\text{eff}}$.
-2. **Temperature scaling.** CR magnitude is a *non-monotonic* function of softmax $T$ with peak at intermediate $T$. At low $T$: softmax concentrates mass at argmax, few tokens above threshold → low CR. At intermediate $T$: distribution broadens, more tokens above threshold → high CR (peak). At high $T$: distribution approaches uniform $1/V$; if $1/V < \theta$ no tokens can be above threshold → low CR. Peak position depends on vocabulary size $V$ and threshold $\theta$. The original simplified "monotonic increase" prediction was empirically falsified in temperature-sweep datasets; the non-monotonic peaked prediction is empirically confirmed (see supplementary materials).
-3. **Context-length dependence.** Longer context modifies $\Gamma_{\text{eff}}$; CR profiles reflect this.
-4. **Correctness correlation.** Paper 1's empirical finding (CR ~ $-0.423$ correlation with errors, $p < 0.0001$) is predicted by the mapping: high CR = large uncertainty = higher error probability. This is already observed empirically; the mapping provides theoretical explanation.
+### 5B.7 Empirical status
 
-### 5B.6 Discrete-time artifacts
+The analysis covers five datasets (about 1,600 sequences, thinking disabled, direct-answer responses only) and is stratified by instrument, because the datasets do not all store the same quantity under the name CR.
 
-LLM token-generation is discrete; the continuum Keldysh formalism is continuous. Known limitations:
-- CR is integer-valued, not real; quantisation noise on $\mathcal{F}_\theta$
-- Token-step time is the forward-pass duration, not Planck-scale
-- Attention mechanism introduces non-Markovian memory (context-dependence)
+On the three count-instrumented substrates, the exponential fit gives $R^2$ 0.980–0.997 and a fitted decay constant of 0.34–0.46 tokens. On the two ratio-instrumented substrates the decay form is equally clean ($R^2$ 0.992–0.994), but no timescale is read off: the runner discards values at or above 100 before fitting, which removes 59 % and 73 % of tokens there and so leaves the lag unit ill-defined.
 
-Extension to non-Markovian Keldysh formalism is research-level work (see Section 6 gap #2).
+Every fitted timescale is shorter than one token. The correlation is essentially gone at the first lag: $C(1)/C(0)$ is at most 0.105 across the five substrates, and 0.004 and −0.028 on the two ratio-instrumented ones. A step down followed by a flat line is the shape an exponential with $\Gamma_{\text{eff}} \gg 1$ fits well, which is why $R^2$ is high and why a high $R^2$ carries little information here. What the data show is that CR carries no detectable memory beyond the adjacent token, which is what a Markov process looks like. They do not measure $\tau_c$, which lies below the resolution of a per-token series.
 
-### 5B.7 Result and empirical status
+The framework's primary measure is entropy in nats, and only one of the five datasets keeps per-token entropy. On that one the same pattern appears ($R^2$ 0.993, fitted decay 0.43 tokens). One substrate is suggestive only.
 
-The Paper 1 CR-signal is a discrete-time Keldysh observable on the LLM substrate. Existing Paper 1 empirical data (CR-error correlation $-0.423$) is consistent with the mapping and receives theoretical explanation.
+A minority of sequences departs from the pattern. Per-sequence power-spectrum fits find a sub-population of about 1 % with a $1/f$ spectrum, against none in matched white-noise Monte Carlo (master §4.3, Figure 6).
 
-**Empirical validation status:**
+Overall, the data bear on one of the three assumptions and not on the identification itself. The Markovian-modes assumption is supported in bulk, with no memory beyond the adjacent token, and departs in a tail of about 1 %. The exponential form is consistent with the mapping but generic. The Gaussian-Keldysh identification is untested; the test that would discriminate it is not run: instrument the same model and the same sequences with both CR measures concurrently and without masking, and ask whether the two autocorrelations stand in the relation the local-Gaussian link predicts, testing the exponential against stretched-exponential and ARMA alternatives by information criterion.
 
-- **Prediction #1 (autocorrelation exponential decay): strongly confirmed.** Analysis of 6 Paper 1 datasets (~3200 sequences across 5 model architectures, including Qwen3.5 9B, Qwen3 235B, Llama 3.1 base, Liquid LFM2, mixed T-sweep) shows $R^2 \in [0.901, 0.997]$ for exponential fit of $C_{\text{CR}}(\tau)$. Cross-substrate $\tau_c$ varies 0.10–0.68 tokens, instantiating substrate-timescale variation at the computational scale.
+## 5C. Onsager-Machlup from the classical limit (detail for master §4.2)
 
-- **Prediction #2 (temperature scaling): refined and confirmed.** Original simplified prediction ("monotonic increase") is *incorrect* for threshold-based CR. Correct prediction: CR(T) is *non-monotonic with a peak* (determined by $V$ and $\theta$). Empirically observed peak at $T \approx 0.45$–$0.55$ or $T < 0.30$ in two datasets.
+Regime 2 identifies the classical stochastic race with the Onsager-Machlup path integral and a Freidlin-Wentzell commit. This section sets out the chain from Schwinger-Keldysh through the classical limit.
 
-Full analysis with limitations is provided in supplementary materials.
+### 5C.1 Setup: Langevin dynamics
 
-**Overall status.** Corollary 4 is now empirically validated for the LLM substrate. Paper 10 has a direct empirical anchor in an accessible substrate, not depending on attosecond metrology or hard-to-access physical substrates.
+Take a classical stochastic system governed by the overdamped Langevin equation
 
----
+$$\partial_t \phi(t) = F[\phi(t)] + \eta(t), \quad \langle\eta(t)\eta(t')\rangle = 2D\,\delta(t-t'),$$
 
-## 5D. Onsager-Machlup derivation (unpacking Corollary 2)
+where $\phi$ is the state variable, $F$ the deterministic drift (typically $F = -\nabla U/\gamma$ for a potential $U$), and $\eta$ Gaussian noise of intensity $D$.
 
-Corollary 2 claims that classical stochastic race = Onsager-Machlup path integral with Freidlin-Wentzell commit. This section develops the derivation formally from Schwinger-Keldysh via the classical limit.
+### 5C.2 Martin-Siggia-Rose transformation
 
-### 5D.1 Setup — Langevin dynamics
+Introducing a response field $\hat\phi$ turns the Langevin equation into a path integral:
 
-Consider a classical stochastic system governed by the overdamped Langevin equation:
+$$P[\phi] = \int \mathcal{D}\hat\phi\, \exp\left\{\int dt\, \left[i\hat\phi(\partial_t\phi - F[\phi]) - D\hat\phi^2\right]\right\}$$
 
-$$\partial_t \phi(t) = F[\phi(t)] + \eta(t), \quad \langle\eta(t)\eta(t')\rangle = 2D\,\delta(t-t')$$
+Integrating out $\hat\phi$ (Gaussian) gives
 
-where $\phi$ is the state variable, $F$ is the deterministic drift (typically $F = -\nabla U/\gamma$ for potential $U$), and $\eta$ is Gaussian noise of intensity $D$.
+$$P[\phi] \propto \exp\left\{-\frac{1}{4D}\int dt\, (\partial_t\phi - F[\phi])^2\right\},$$
 
-### 5D.2 MSR (Martin-Siggia-Rose) transformation
-
-Introduce an auxiliary "response field" $\hat\phi$ to convert the Langevin equation to a path integral. Path probability:
-
-$$P[\phi] = \int \mathcal{D}\hat\phi\, \exp\left\{\int dt\, i\hat\phi(\partial_t\phi - F[\phi]) - D\hat\phi^2\right\}$$
-
-Gaussian-integrate out $\hat\phi$:
-
-$$P[\phi] \propto \exp\left\{-\frac{1}{4D}\int dt\, (\partial_t\phi - F[\phi])^2\right\}$$
-
-This is the **Onsager-Machlup (1953) path probability**. For $F = -\nabla U/\gamma$ (overdamped, potential-driven):
+the Onsager-Machlup (1953) path probability. For $F = -\nabla U/\gamma$:
 
 $$P[x(t)] \propto \exp\left\{-\frac{1}{4D}\int dt\, (\dot{x} + \nabla U/\gamma)^2\right\}$$
 
-### 5D.3 Connection to Schwinger-Keldysh
+(The Jacobian term that appears for multiplicative noise or a non-constant drift derivative under Stratonovich discretisation is omitted, as is usual at this level.)
 
-Start from the full Schwinger-Keldysh action (from the main theorem):
+### 5C.3 Connection to Schwinger-Keldysh
 
-$$S_{SK}[\phi_+, \phi_-] = S[\phi_+] - S[\phi_-] + S_{IF}[\phi_+, \phi_-]$$
+Start from the Schwinger-Keldysh action of §3,
 
-Rotate to the Keldysh basis: $\phi_c = (\phi_+ + \phi_-)/2$ (classical field), $\phi_q = \phi_+ - \phi_-$ (quantum field).
+$$S_{SK}[\phi_+, \phi_-] = S[\phi_+] - S[\phi_-] + S_{IF}[\phi_+, \phi_-],$$
 
-Take the classical limit $\hbar \to 0$: quantum field fluctuations become small. Expand the action to leading order in $\phi_q$:
+rotate to $\phi_c = (\phi_+ + \phi_-)/2$ and $\phi_q = \phi_+ - \phi_-$, and take $\hbar \to 0$, in which the quantum field is small. To leading order in $\phi_q$,
 
-$$S_{SK} \to \int dt\, \phi_q \left[\partial_t\phi_c - F[\phi_c]\right] + iD\phi_q^2 + \mathcal{O}(\phi_q^3)$$
+$$S_{SK} \to \int dt\, \left\{\phi_q \left[\partial_t\phi_c - F[\phi_c]\right] + iD\phi_q^2\right\} + \mathcal{O}(\phi_q^3),$$
 
-**Critical observation.** This *is* the MSR action with the identification $\hat\phi \equiv \phi_q$. The classical limit of Schwinger-Keldysh *is* the MSR formalism.
+so that $e^{iS_{SK}}$ has exactly the Martin-Siggia-Rose form of §5C.2 with $\hat\phi \equiv \phi_q$, the noise intensity fixed by the fluctuation-dissipation relation. Integrating out $\phi_q$ then gives the Onsager-Machlup path integral. The chain is Schwinger-Keldysh, Keldysh rotation, classical limit, Martin-Siggia-Rose, Onsager-Machlup; each step is standard (Martin, Siggia & Rose 1973; Kamenev 2011).
 
-Integrating out $\phi_q$ via Gaussian → Onsager-Machlup path integral (step 5D.2). **Chain complete: SK → Keldysh rotation → classical limit → MSR → OM.**
+### 5C.4 Freidlin-Wentzell commit
 
-### 5D.4 Freidlin-Wentzell commit
+In the weak-noise limit $D \to 0$ the path probability concentrates sharply,
 
-For weak-noise limit $D \to 0$, the OM path probability concentrates sharply:
+$$P[x(t)] \propto \exp\left\{-\frac{S_{OM}[x]}{2D}\right\}, \qquad S_{OM}[x] = \frac{1}{2}\int dt\, (\dot{x} + \nabla U/\gamma)^2,$$
 
-$$P[x(t)] \propto \exp\left\{-\frac{S_{OM}[x]}{2D}\right\}$$
+which is the same expression as §5C.2. Large-deviation theory (Freidlin & Wentzell 1984) gives two statements. Unconditionally, as $D \to 0$ the path measure concentrates on the zero-action, deterministic trajectory. A rare transition between basins, conditional on its occurring, concentrates on the minimum-action trajectory $x^*$ connecting them, and its rate falls as $e^{-\Delta U/k_B T}$ (Kramers 1940). The commit in the race sense is the second: which basin the trajectory ends in.
 
-where the Onsager-Machlup action is:
+### 5C.5 Axiom mapping (Regime 2)
 
-$$S_{OM}[x] = \frac{1}{2}\int dt\, (\dot{x} + \nabla U/\gamma)^2$$
+- A1 (parallelism): $\int \mathcal{D}x$ over all paths, the parallel evaluation of candidate trajectories.
+- A2 (competition): $\exp(-S_{OM}/2D)$ weights paths differentially; the Onsager-Machlup action is the competition metric.
+- A3 (constraint): the noise intensity and the drift set the commit timescale. For thermal noise $D = k_B T/\gamma$, the diffusive time over a characteristic length $\ell$ is $\tau_c \approx \gamma\ell^2/(2k_B T)$, and barrier crossing adds the Kramers factor $e^{\Delta U/k_B T}$.
+- A4 (commit): Freidlin-Wentzell concentration on the minimum-action path between basins, a classical counterpart of pointer-basis selection (a path, not a basis).
+- A5 (irreversibility): the dissipative drift produces entropy in the thermal bath; the Landauer bound applies only where the commit erases bits.
 
-Large-deviation theory (Freidlin-Wentzell 1984) yields: the dominant path is the minimum-action "instanton" trajectory $x^*$. The system commits to $x^*$ with probability $\to 1$ as $D \to 0$.
+### 5C.6 Examples
 
-### 5D.5 Axiom mapping (Corollary 2)
+- Overdamped Brownian motion in a potential: $F = -\nabla U/\gamma$, the standard Onsager-Machlup case.
+- Chemical reaction rates: Kramers escape, $\tau \propto e^{\Delta U/k_B T}$, a direct Freidlin-Wentzell application.
+- Neural accumulation: subthreshold membrane voltage driving a spike can be written in this form.
 
-- **A1 (parallelism):** $\int \mathcal{D}x$ over all paths — parallel evaluation of candidate trajectories
-- **A2 (competition):** $\exp(-S_{OM}/2D)$ weights paths differentially — Onsager-Machlup action is the competition metric
-- **A3 (constraint):** noise intensity $D$ and drift $F$ set the commit-timescale via fluctuation-dissipation: $\tau_c \sim \gamma/(k_B T)$ for thermal noise $D = k_B T/\gamma$
-- **A4 (commit):** Freidlin-Wentzell minimum-action path selection (classical analog of pointer-basis selection)
-- **A5 (irreversibility):** dissipative drift $F = -\nabla U/\gamma$ produces entropy; Landauer bound satisfied via thermal bath
+## 6. Known gaps
 
-### 5D.6 Examples
+1. Pointer-basis uniqueness. Zurek's argument has technical subtleties; a formal treatment needs a precise statement and careful citation.
+2. Markovianity. Assumption (ii) is a scope restriction rather than a gap. Real environments have non-Markovian corrections (non-local Feynman-Vernon kernels, memory effects), and extensions exist in the literature (time-convolutionless master equations, hierarchical equations of motion, the Breuer-Petruccione formalism). The representation is stated for the Markovian case; the non-Markovian case would need its own construction. The language-model data in §5B.7 bear on the Markovian-modes assumption of the mapping, not on assumption (ii), which concerns physical environments.
+3. Born rule. Taken as input (§5A).
+4. Biological regime. The biological regime is not treated as a parameter limit of the quantum representation. Master §4.4 instead runs the operational tests directly at four levels of living organisation.
+5. CR-to-Keldysh mapping. Developed in §5B as an analogy under three assumptions; the discriminating test is not run.
+6. Quantum speed limit. A3 uses Margolus-Levitin; the unified Levitin-Toffoli (2009) bound, which also covers the Mandelstam-Tamm form, may be the more appropriate statement.
+7. Closed systems. A closed quantum system without an environment is the evaluation-only limit: A1 and A2 hold, but there is no commit, so it is not a complete race.
 
-- **Overdamped Brownian motion** in a potential: $F = -\nabla U/\gamma$, standard OM
-- **Chemical reaction rates:** Kramers escape $\tau \propto e^{S_{OM}/2D}$ (direct Freidlin-Wentzell application)
-- **Neural population dynamics:** subthreshold membrane voltage $\phi$ drives spike-commits in the OM regime
-- **Soft-matter self-assembly:** colloidal self-organisation follows OM dynamics
+## 7. Correspondence with the master
 
-### 5D.7 Status
-
-Corollary 2 now has a formal derivation chain: Schwinger-Keldysh → Keldysh rotation → classical limit → MSR → Onsager-Machlup + Freidlin-Wentzell. Each step uses established mathematics (Kamenev 2011 *Field Theory of Non-Equilibrium Systems* is canonical; Altland-Simons *Condensed Matter Field Theory* chapter on Keldysh is alternative).
-
-Completes the theoretical pyramid: 5A (Born rule via envariance), 5B (CR-Keldysh mapping), 5D (Onsager-Machlup via classical limit). The three corollaries of the main theorem now have formal unpackings.
-
----
-
-## 5E. Noether and symmetry-breaking — speculative, not part of Paper 10 argument
-
-A Noether-style reformulation of race is possible in principle — symmetry ↔ conservation, commit as discrete symmetry-breaking, with analogies to Higgs vacuum selection and ferromagnet magnetisation. It is not pursued here. The analogies are structurally suggestive but not load-bearing for the argument, and the framework as developed does not depend on them; they are noted only to mark the direction as available and deliberately unclaimed.
-
----
-
-## 6. Known Gaps / Next Steps for Peer-Review Rigour
-
-1. **Formal proof of pointer-basis uniqueness.** Zurek's original argument has technical subtleties; careful citation + precise statement is needed.
-2. **Markovianity assumption.** Explicitly stated in theorem assumption (ii); not a gap but a scope-restriction. Real environments have non-Markovian corrections (Feynman-Vernon non-local kernels, memory effects). Extension to non-Markovian regimes exists in the literature (Shibata-Shimasaki time-convolutionless master equation, Hierarchical Equations of Motion, Breuer-Petruccione formalism). The backbone theorem holds for the Markovian case; the non-Markovian case yields broader corollaries but requires separate derivation. **Not a paper-blocker** — scope-restriction, clearly announced.
-
-   **Empirical note.** Fourier power-spectrum analysis of 4 LLM-substrate datasets shows $\alpha \in [0.08, 0.17]$ (close to white noise $\alpha = 0$), indicating Markovian dynamics. Assumption (ii) is empirically validated on the LLM substrate (see supplementary materials).
-3. **Envariance derivation details.** ~~gap~~ Addressed in Section 5A. Full peer-review rigour still requires explicit treatment of the Schlosshauer-Fine (2005) critique + parallel Deutsch-Wallace (2012) derivation as backup.
-4. **Biological-substrate corollary not claimed.** The biological-substrate scope of FT is established in Paper 1 §6 via race-model and substrate-physics machinery appropriate to that scope. A Paper 10 corollary deriving biological inference as a strict parameter-limit of the QM-substrate Schwinger-Keldysh derivation is not claimed here; the biological substrate's variational-inference dynamics are sufficiently distinct from quantum coherent dynamics that deriving them as a limit of one another is not the framework's strongest mode of unification.
-5. **CR-to-Keldysh mapping.** ~~gap~~ Addressed in Section 5B. Formal mapping via threshold functional on equal-time Keldysh component + four testable predictions against Paper 1 data. Full empirical validation awaits separate re-analysis work.
-6. **Quantum speed limit sharpness.** Margolus-Levitin in A3; the Levitin-Toffoli (2009) unified bound may be more appropriate.
-7. **Edge cases.** Closed quantum systems without environment = evaluation-only limit, not complete race. Explicit acknowledgment in paper.
-8. **Relativistic extension.** Schwinger-Keldysh in curved spacetime gives Lorentz invariance automatically (standard QFT), but is spelled out for §5.3 of the master.
-
----
-
-## 7. Connection to Paper 10 master
-
-This derivation operationalises the "Derivation Strategy" section of the master:
-
-| Pyramid level | Document section |
+| Master | This document |
 |---|---|
-| Abstract axioms A1–A5 | Section 2 |
-| Unification (MSR/SK) | Section 3 Theorem |
-| Quantum limit | Corollary 1 |
-| Classical limit | Corollary 2 |
-| Biological instance | Corollary 3 |
-| LLM/CR instance | Corollary 4 |
+| §2.2 Five axioms A1–A5 | §2 |
+| §3.2 Representation result, §3.3 construction | §3, §5, §5A |
+| §4.1 Quantum regime | §4 (Regime 1) |
+| §4.2 Classical stochastic regime | §4 (Regime 2), §5C |
+| §4.3 Computational substrate-mapping | §4, §5B |
+| §4.4 Biological regime | not derived here (§6, item 4) |
 
-Paper 10's §5 (time as emergent from race) instantiates Corollary 1. §5.3 (Lorentz-covariance of race-structure) emerges from Schwinger-Keldysh covariance (standard QFT).
+Master §5 (time as commit count) draws on the Margolus-Levitin bound stated in A3.
+
+## References
+
+Brown, S. D. & Heathcote, A. (2008). The simplest complete model of choice response time: Linear ballistic accumulation. *Cognitive Psychology* 57(3), 153–178. https://doi.org/10.1016/j.cogpsych.2007.12.002
+
+Deutsch, D. (1999). Quantum theory of probability and decisions. *Proc. R. Soc. A* 455, 3129–3137.
+
+Feynman, R. P. & Vernon, F. L. Jr. (1963). The theory of a general quantum system interacting with a linear dissipative system. *Annals of Physics* 24, 118–173.
+
+Freidlin, M. I. & Wentzell, A. D. (1984). *Random Perturbations of Dynamical Systems.* Springer.
+
+Kamenev, A. (2011). *Field Theory of Non-Equilibrium Systems.* Cambridge University Press.
+
+Keldysh, L. V. (1964). Diagram technique for nonequilibrium processes. *Zh. Eksp. Teor. Fiz.* 47, 1515–1527; *Sov. Phys. JETP* 20, 1018 (1965).
+
+Kramers, H. A. (1940). Brownian motion in a field of force and the diffusion model of chemical reactions. *Physica* 7, 284–304.
+
+Landauer, R. (1961). Irreversibility and heat generation in the computing process. *IBM J. Res. Dev.* 5, 183–191.
+
+Levitin, L. B. & Toffoli, T. (2009). Fundamental limit on the rate of quantum dynamics: the unified bound is tight. *Phys. Rev. Lett.* 103, 160502.
+
+Margolus, N. & Levitin, L. B. (1998). The maximum speed of dynamical evolution. *Physica D* 120, 188–195.
+
+Martin, P. C., Siggia, E. D. & Rose, H. A. (1973). Statistical dynamics of classical systems. *Phys. Rev. A* 8, 423–437.
+
+Onsager, L. & Machlup, S. (1953). Fluctuations and irreversible processes. *Phys. Rev.* 91, 1505–1512.
+
+Ratcliff, R. (1978). A theory of memory retrieval. *Psychological Review* 85(2), 59–108. https://doi.org/10.1037/0033-295X.85.2.59
+
+Schlosshauer, M. & Fine, A. (2005). On Zurek's derivation of the Born rule. *Found. Phys.* 35, 197–213.
+
+Schwinger, J. (1961). Brownian motion of a quantum oscillator. *J. Math. Phys.* 2, 407–432.
+
+Usher, M. & McClelland, J. L. (2001). The time course of perceptual choice: The leaky, competing accumulator model. *Psychological Review* 108(3), 550–592. https://doi.org/10.1037/0033-295X.108.3.550
+
+Vickers, D. (1970). Evidence for an accumulator model of psychophysical discrimination. *Ergonomics* 13(1), 37–58. https://doi.org/10.1080/00140137008931117
+
+Wallace, D. (2012). *The Emergent Multiverse: Quantum Theory According to the Everett Interpretation.* Oxford University Press.
+
+Zurek, W. H. (1981). Pointer basis of quantum apparatus: Into what mixture does the wave packet collapse? *Phys. Rev. D* 24, 1516.
+
+Zurek, W. H. (1982). Environment-induced superselection rules. *Phys. Rev. D* 26, 1862.
+
+Zurek, W. H. (2003). Decoherence, einselection, and the quantum origins of the classical. *Rev. Mod. Phys.* 75, 715.
+
+Zurek, W. H. (2005). Probabilities from entanglement, Born's rule from envariance. *Phys. Rev. A* 71, 052105.
