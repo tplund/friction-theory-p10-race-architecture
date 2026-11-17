@@ -14,7 +14,7 @@ It does not show that quantum, classical, biological and computational systems s
 
 ## 2. Formal race-axioms
 
-The name and the accumulator reading come from the race models of decision research (Vickers 1970; Ratcliff 1978; Usher & McClelland 2001; Brown & Heathcote 2008), where parallel accumulators compete and the first to a threshold sets the outcome; master §2.2 sets out how the axioms below relate to that tradition. What follows states the axioms in a form general enough to apply to physical substrates.
+The name and the accumulator reading come from the sequential-sampling models of decision research: race models, in which parallel accumulators compete and the first to a threshold sets the outcome (Vickers 1970; Brown & Heathcote 2008), competing accumulators coupled by lateral inhibition (Usher & McClelland 2001), and the diffusion decision model, a single accumulated difference between two bounds (Ratcliff 1978); master §2.2 sets out how the axioms below relate to that tradition. What follows states the axioms in a form general enough to apply to physical substrates.
 
 A race-system consists of:
 - a configuration space $\mathcal{C}$ (Hilbert space, classical phase space, or general measure space);
@@ -32,7 +32,7 @@ Observable expectations are computed as functional derivatives. The integration 
 
 ### A2 (Competitive Interaction)
 
-Path histories carry weights $w[\phi] = e^{iS_{\text{eff}}[\phi]/\hbar_{\text{eff}}}$. On the Schwinger-Keldysh closed-time-path contour the effective action includes a term coupling the two branches:
+Path histories carry weights $w[\phi] = e^{iS_{\text{eff}}[\phi]/\hbar_{\text{eff}}}$. On the Schwinger-Keldysh closed-time-path contour (Schwinger 1961; Keldysh 1964) the effective action includes a term coupling the two branches:
 
 $$S_{\text{eff}}[\phi_+, \phi_-] = S[\phi_+] - S[\phi_-] + S_{\text{diss}}[\phi_+, \phi_-]$$
 
@@ -190,7 +190,7 @@ A3's commit timescale $\tau_c = 1/\Gamma$ has a formal analogue on the language-
 1. Autocorrelation. $C_{\text{CR}}(\tau) = \langle\text{CR}(t)\,\text{CR}(t+\tau)\rangle_t$ should decay exponentially on a timescale $1/\Gamma_{\text{eff}}$. Exponential autocorrelation is generic for short-memory token-level series, so agreement is consistency, not confirmation.
 2. Temperature. CR is a non-monotonic function of softmax $T$ with a peak at intermediate $T$. At low $T$ the softmax concentrates its mass on the argmax and few tokens clear the threshold; at intermediate $T$ the distribution broadens and more do; at high $T$ it approaches uniform $1/V$, and once $1/V < \theta$ none can. The peak position depends on $V$ and $\theta$. This follows from thresholding a softmax and does not discriminate the mapping from any other account of a thresholded softmax.
 3. Context length. Longer context should modify $\Gamma_{\text{eff}}$, and CR profiles should reflect it. Not tested.
-4. Correctness. Paper 1 reports that CR correlates with error at $\rho = -0.423$ ($p < 0.0001$). The mapping is consistent with this: high CR means a wide pre-commit distribution and so a higher chance that sampling lands on a wrong token. Any account in which a wider distribution means more sampling error predicts the same correlation, so it does not discriminate either.
+4. Correctness. The companion pipeline paper finds that wrong answers carry a higher count than correct ones on four of its five benchmark cells (differences of +0.11 to +0.30), with the sign reversed on the fifth, GPQA Diamond, and that entropy equals or exceeds the count as an error predictor on all five (master §4.3). Where the sign holds, the mapping is consistent with this: high CR means a wide pre-commit distribution and so a higher chance that sampling lands on a wrong token. Any account in which a wider distribution means more sampling error predicts the same correlation, so it does not discriminate either.
 
 ### 5B.6 Discrete-time limits
 
@@ -280,7 +280,7 @@ which is the same expression as §5C.2. Large-deviation theory (Freidlin & Wentz
 ## 6. Known gaps
 
 1. Pointer-basis uniqueness. Zurek's argument has technical subtleties; a formal treatment needs a precise statement and careful citation.
-2. Markovianity. Assumption (ii) is a scope restriction rather than a gap. Real environments have non-Markovian corrections (non-local Feynman-Vernon kernels, memory effects), and extensions exist in the literature (time-convolutionless master equations, hierarchical equations of motion, the Breuer-Petruccione formalism). The representation is stated for the Markovian case; the non-Markovian case would need its own construction. The language-model data in §5B.7 bear on the Markovian-modes assumption of the mapping, not on assumption (ii), which concerns physical environments.
+2. Markovianity. Assumption (ii) is a scope restriction rather than a gap. Real environments have non-Markovian corrections (non-local Feynman-Vernon kernels, memory effects), and extensions exist in the literature (time-convolutionless master equations, hierarchical equations of motion). The representation is stated for the Markovian case; the non-Markovian case would need its own construction.
 3. Born rule. Taken as input (§5A).
 4. Biological regime. The biological regime is not treated as a parameter limit of the quantum representation. Master §4.4 instead runs the operational tests directly at four levels of living organisation.
 5. CR-to-Keldysh mapping. Developed in §5B as an analogy under three assumptions; the discriminating test is not run.
